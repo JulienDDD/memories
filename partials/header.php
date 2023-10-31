@@ -12,6 +12,11 @@
     <a href="register.php" class="lien">Inscription</a>
     <a href="myAccount.php" class="lien">Mon espace</a>
     <a href="contact.php" class="lien">Nous contacter</a>
+    <?php 
+    if (isset($_SESSION['user'])) {
+        echo '<a href="disconnect.php" class="lien">'.$_SESSION['user']['pseudo'].'</a>';
+    }
+    ?>
         </div>
         
       </div>
