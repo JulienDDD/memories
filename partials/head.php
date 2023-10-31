@@ -6,5 +6,6 @@
         <link rel="stylesheet" href="assets/css/header.css">
         <link rel="stylesheet" href="assets/css/main_score.css">
         <link rel="stylesheet" href="assets/css/footerindex.css">
+        <link rel="stylesheet" href="assets/css/main.css">
         <script src="https://kit.fontawesome.com/fd7b39a087.js" crossorigin="anonymous"></script>
     </head>

@@ -4,26 +4,32 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>Jeu</title>
-      <link rel="stylesheet" href ="assets/css/main.css">
-      <link rel="stylesheet" href ="assets/css/header.css">
-      <link rel="stylesheet" href="assets/css/footerindex.css">
+      <link rel="stylesheet" href ="../../assets/css/main.css">
+      <link rel="stylesheet" href ="../../assets/css/header.css">
+      <link rel="stylesheet" href="../../assets/css/footerindex.css">
       <script src="https://kit.fontawesome.com/fd7b39a087.js" crossorigin="anonymous"></script>
     </head>
-    <body style="background-color: #151231;; background-size: 1520px 800px;">
-      <div class="under-header">        
-         <a href="../../index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
-          <div class="header-right">
-          <a href="../../index.php" class="lien">Accueil</a>
-          <a href="index.php" class="lien">Jeu</a>
-          <a href="scores.php" class="lien">Scores</a>
-          <a href="../../login.php" class="lien">Connexion</a>
-          <a href="../../register.php" class="lien">Inscription</a>
-          <a href="../../myAccount.php" class="lien">Mon espace</a>
-          <a href="../../contact.php" class="lien">Nous contacter</a>
+    <body style="background-color: #151231; background-size: 1520px 800px;">
+    <div class="under-header" id="top">        
+    
+        <div class="header">
+            
+        <a href="../../index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
+        <div class="header-right">
+        <a href="../../index.php" class="lien">Accueil</a>
+        <a href="index.php" class="lien">Jeu</a>
+        <a href="scores.php" class="lien">Scores</a>
+        <a href="../../login.php" class="lien">Connexion</a>
+        <a href="../../register.php" class="lien">Inscription</a>
+        <a href="../../myAccount.php" class="lien">Mon espace</a>
+        <a href="../../contact.php" class="lien">Nous contacter</a>
+            </div>
+            
           </div>
+        </br></br></br>
+          <center><br><h1 style="margin-top: 0px; display: block;">The Power Of Memory</h1></center>
         </div>
-        <div><center><h1 class="couleur1">LE JEU</h1></center></div>
-      </div>
+
     
       <br/>
       <div class="choix">
@@ -60,15 +66,15 @@
       <div class="global_theme">
         <div class="txt_imgtheme">
           <h4 class="txt_theme">Exemple du thème 1 : </h4>
-          <img src="assets/img/ex_theme1.png" class="img_theme">
+          <img src="../../assets/img/ex_theme1.png" class="img_theme">
         </div>
         <div class="txt_imgtheme">
           <h4 class="txt_theme">Exemple du thème 2 : </h4>
-          <img src="assets/img/ex_theme2.png" class="img_theme">
+          <img src="../../assets/img/ex_theme2.png" class="img_theme">
         </div>
         <div class="txt_imgtheme">
           <h4 class="txt_theme">Exemple du thème 3 : </h4>
-          <img src="assets/img/ex_theme3.png" class="img_theme">
+          <img src="../../assets/img/ex_theme3.png" class="img_theme">
         </div>
       </div>
       <center><div class="border_jeu"></div></center>
@@ -83,30 +89,30 @@
       <br><br>
       <div class="jeu_carte">
         <div class="ligne_jeu">
-          <img src="assets/img/dos_carte.png" class="dos_carte">
-          <img src="assets/img/dos_carte.png" class="dos_carte">
-          <img src="assets/img/dos_carte.png" class="dos_carte">
-          <img src="assets/img/dos_carte.png" class="dos_carte">
+          <img src="../../assets/img/dos_carte.png" class="dos_carte">
+          <img src="../../assets/img/dos_carte.png" class="dos_carte">
+          <img src="../../assets/img/dos_carte.png" class="dos_carte">
+          <img src="../../assets/img/dos_carte.png" class="dos_carte">
 
         </div>
         <div class="jeu_carte">
           <div class="ligne_jeu">
-            <img src="assets/img/dos_carte.png" class="dos_carte">
-            <img src="assets/img/dos_carte.png" class="dos_carte">
-            <img src="assets/img/dos_carte.png" class="dos_carte">
-            <img src="assets/img/dos_carte.png" class="dos_carte">
+            <img src="../../assets/img/dos_carte.png" class="dos_carte">
+            <img src="../../assets/img/dos_carte.png" class="dos_carte">
+            <img src="../../assets/img/dos_carte.png" class="dos_carte">
+            <img src="../../assets/img/dos_carte.png" class="dos_carte">
           </div>
           <div class="ligne_jeu">
-            <img src="assets/img/dos_carte.png" class="dos_carte">
-            <img src="assets/img/dos_carte.png" class="dos_carte">
-            <img src="assets/img/dos_carte.png" class="dos_carte">
-            <img src="assets/img/dos_carte.png" class="dos_carte">
+            <img src="../../assets/img/dos_carte.png" class="dos_carte">
+            <img src="../../assets/img/dos_carte.png" class="dos_carte">
+            <img src="../../assets/img/dos_carte.png" class="dos_carte">
+            <img src="../../assets/img/dos_carte.png" class="dos_carte">
           </div>
           <div class="ligne_jeu">
-            <img src="assets/img/dos_carte.png" class="dos_carte">
-            <img src="assets/img/dos_carte.png" class="dos_carte">
-            <img src="assets/img/dos_carte.png" class="dos_carte">
-            <img src="assets/img/dos_carte.png" class="dos_carte">
+            <img src="../../assets/img/dos_carte.png" class="dos_carte">
+            <img src="../../assets/img/dos_carte.png" class="dos_carte">
+            <img src="../../assets/img/dos_carte.png" class="dos_carte">
+            <img src="../../assets/img/dos_carte.png" class="dos_carte">
           </div>
         </div>
         </div>

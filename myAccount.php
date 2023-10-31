@@ -1,37 +1,10 @@
+
+<?php require_once("utils/common.php") ?>
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href ="assets/css/main.css">
-    <link rel="stylesheet" href ="assets/css/header.css">
-    <link rel="stylesheet" href="assets/css/footerindex.css">
-    <link rel="stylesheet" href="assets/css/footerindex.css">
-    <script src="https://kit.fontawesome.com/fd7b39a087.js" crossorigin="anonymous"></script>
-    <title>Z</title>
-</head>
+<?= require_once(SITE_ROOT."partials/head.php");?>
 <body style="background-color: #151231; background-size: 1520px 800px;">
-    <div class="under-header" id="top">        
-    
-        <div class="header">
-            
-        <a href="index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
-        <div class="header-right">
-        <a href="index.php" class="lien">Accueil</a>
-        <a href="games/memory/index.php" class="lien">Jeu</a>
-        <a href="games/memory/scores.php" class="lien">Scores</a>
-        <a href="login.php" class="lien">Connexion</a>
-        <a href="register.php" class="lien">Inscription</a>
-        <a href="myAccount.php" class="lien">Mon espace</a>
-        <a href="contact.php" class="lien">Nous contacter</a>
-            </div>
-            
-          </div>
-        </br></br></br>
-          <center><br><h1 style="margin-top: 0px; display: block;">INSCRIPTION</h1></center>
-        </div>
-
+<?= require_once(SITE_ROOT.'partials/header.php')?>
 
 
     <main>
