@@ -1,12 +1,13 @@
+
 <div class="under-header" id="top">        
     
     <div class="header">
         
-    <a href="index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
+    <a href="index.php" class="lien" style="font-size: 1.5em; <?php if($_SESSION['currentPage'] == 'acceuil'){ echo 'color: gray;'; } ?>">The Power of memory</a>
     <div class="header-right">
     <a href="index.php" class="lien">Accueil</a>
-    <a href="games/memory/index.php" class="lien">Jeu</a>
-    <a href="games/memory/scores.php" class="lien">Scores</a>
+    <a href="games/memory/index.php" class="lien" style="<?php if($_SESSION['currentPage'] == 'jeu'){ echo 'color: #EC9224;'; } ?>">Jeu</a>
+    <a href="scores.php" class="lien" style="<?php if($_SESSION['currentPage'] == 'scores'){ echo 'color: #EC9224;'; } ?>">Scores</a>
     <a href="login.php" class="lien">Connexion</a>
     <a href="register.php" class="lien">Inscription</a>
     <a href="myAccount.php" class="lien">Mon espace</a>

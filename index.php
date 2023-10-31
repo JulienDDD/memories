@@ -2,7 +2,7 @@
 <?php require_once("utils/common.php") ?>
 <?php require_once(SITE_ROOT."utils/database.php") ?>
 <?php
-
+$_SESSION['currentPage'] = 'acceuil';
 /* INITIALISATION PDO DB */
 $pdo = connectToDbAndGetPdo();
 /* REQUETES DE COMPTAGE */
