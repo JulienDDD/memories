@@ -1,3 +1,7 @@
+<?php 
+require_once('../../utils/common.php');
+require_once(SITE_ROOT.'utils/database.php');
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -56,36 +60,30 @@
           <div class="flex-header">scores</div>
           <div class="flex-header">dates</div>
         </div>
+
+
+        <?php
+$pdo = connectToDbAndGetPdo();
+$stmt = $pdo->prepare('SELECT S.*, P.* 
+FROM scores AS S
+LEFT JOIN players AS P ON S.id_player = P.id_player');
+$results = $stmt->execute();
+$results = $stmt->fetchAll();
+
+
+foreach($results as $result)
+{
+  
+        ?>
         <div class="flex-row">
-          <div class="flex-data">Baptista</div>
-          <div class="flex-data">2</div>
-          <div class="flex-data">30</div>
-          <div class="flex-data">18/10/2023 10:12</div>
+          <div class="flex-data"><?php echo $result->pseudo; ?></div>
+          <div class="flex-data"><?php echo $result->game_strength; ?></div>
+          <div class="flex-data"><?php echo $result->game_score; ?></div>
+          <div class="flex-data"><?php echo $result->game_date; ?></div>
         </div>
-        <div class="flex-row">
-          <div class="flex-data">jouyoukim</div>
-          <div class="flex-data">2</div>
-          <div class="flex-data">20</div>
-          <div class="flex-data">18/10/2023 10:12</div>
-        </div>
-        <div class="flex-row">
-        <div class="flex-data">licornes</div>
-        <div class="flex-data">2</div>
-        <div class="flex-data">20</div>
-         <div class="flex-data">18/10/2023 10:12</div>
-        </div>
-        <div class="flex-row">
-            <div class="flex-data">i miss you</div>
-            <div class="flex-data">2</div>
-            <div class="flex-data">60</div>
-             <div class="flex-data">18/10/2023 10:12</div>
-            </div>
-        <div class="flex-row">
-        <div class="flex-data">omen</div>
-            <div class="flex-data">2</div>
-            <div class="flex-data">50</div>
-             <div class="flex-data">18/10/2023 10:12</div>
-            </div></div>
+<?php } ?>
+       
+          </div>
       
       
           </br> </br> </br> </br>   
