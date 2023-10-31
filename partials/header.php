@@ -1,3 +1,4 @@
+<?php $currentGame = $_SERVER['REQUEST_URI'];?>
 
 <div class="under-header" id="top">        
     
@@ -12,7 +13,6 @@
     <a href="register.php" class="lien">Inscription</a>
     <a href="myAccount.php" class="lien">Mon espace</a>
     <a href="contact.php" class="lien">Nous contacter</a>
-
         </div>
         
       </div>
