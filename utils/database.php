@@ -7,7 +7,7 @@ function connectToDbAndGetPdo()
 
 $host = "localhost";
 $dbusername = "root";
-$dbpassword = "";
+$dbpassword = "root";
 $dbname = "power_of_memorys";
 $dsn = "mysql:dbname=$dbname;host=$host;charset=utf8";
 
