@@ -1,10 +1,10 @@
-<?php $currentGame = $_SERVER['REQUEST_URI'];?>
+
 
 <div class="under-header" id="top">        
     
     <div class="header">
         
-    <a href="index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
+    <a href="index.php" class="lien" style="font-size: 1.5em; <?php if($_SESSION['currentPage'] == "acceuil") ?>">The Power of memory</a>
     <div class="header-right">
     <a href="index.php" class="lien">Accueil</a>
     <a href="games/memory/index.php" class="lien">Jeu</a>
