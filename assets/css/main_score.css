@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
+html,body{
+  font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+.input-container {
+    position: relative;
+    width: 300px;
+    margin: 20px;
+}
+
+.input-container label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.7); /* Fond transparent */
+    padding: 5px;
+}
+
+.input-container input {
+    width: 100%;
+    padding: 10px;
+}
+
+.button_validation_inscription:hover {
+background-color:#ec912385;
+}
+
+
+.button_validation_inscription {
+    margin-right: 35vw; /* Décalage de 20 pixels vers la gauche */
+    padding: 10vw;
+    width: 5vw;
+    height: 2vw;
+    border: none;
+    color: #ffffff;
+    background-color: #ec9123;
+    border-radius: 0.3vw;
+    font-size: 1vw;
+}   
+
+
+.email {
+    width: 100px; 
+    height: 50px; 
+    
+}
+
+input {
+    width: 200vw;
+    padding: 1vw;
+    border: 1px solid #0f0e30;
+    border-radius: 0.2vw;
+    font-size: 16vw;
+    outline: none;
+    transition: border-color 0.2s;
+    background-color: #272647;
+    color: rgb(210, 210, 209);
+}
+
+
+/* Style au survol */
+input:hover {
+    border-color: #ff5733;
+}
+
+h1 {
+    color: aliceblue;
+    font-size: 50px;
+    
+}
+
+.button_validation_inscription {
+    margin-right: 26vw; /* Décalage de 20 pixels vers la gauche */
+    padding: 1vw;
+    width: 7vw;
+    height: 3vw;
+
+}
+
+
+table{
+    color:aliceblue;
+    width: 1000px;
+    text-align: center;
+}
+
+table, caption, th, td {
+
+    border: 2px solid rgb(152, 47, 208)
+
+    
+    }
+
+    td{
+        height: 30px;
+    }
+
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        color: aqua;
+        margin: 0 3vw;
+      }
+      
+      .flex-row {
+        display: flex;
+        justify-content: space-between;
+        margin: 5px 0;
+        text-align: center;
+      }
+      
+      .flex-header {
+        background-color: rgb(152, 47, 208) ;
+        color: #fff;
+        padding: 5px;
+        flex: 1;
+        text-align: center;
+      }
+      
+      .flex-data {
+        border: 1px solid #ccc;
+        padding: 5px;
+        flex: 1;
+        text-align: center;
+      }
+
+

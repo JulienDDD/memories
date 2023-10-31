@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
+html,body{
+  font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+
+
+.titreprinc{
+  margin-top: 10vw;
+}
+
+
+.bouton_jouer{
+  display: inline-block;
+  background-color: #ec9123;
+  color: #eeeeee;
+  text-align: center;
+  font-size: 1.2vw;
+  width: 9vw;
+  height: 3.5vw;
+  cursor: pointer;
+  margin: 1vw;
+  border: none;
+  border-radius: 2px;
+  }
+
+.bouton_jouer:hover {
+    background-color:#ec91239f;
+  }
+
+.header {
+  margin-top: -11.2vw;
+  opacity: 0.8; 
+  overflow: hidden;
+  padding-right: 2vw;
+  padding-left: 2vw;
+
+  }
+
+.lien:hover{
+  border-top: 0.3vw solid #ec9123 ;
+  color: #ec9123;
+}
+  
+  
+  .header a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 1vw;
+    text-decoration: none;
+    font-size: 1vw; 
+    line-height: 3vw;
+  }
+  
+  
+  .header a:hover {
+    color: #F29522;
+  }
+
+ .header a.effect-underline:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    display: inline-block;
+    height: 1em;
+    width: 100%;
+    border-bottom: 1px solid;
+    margin-top: 10px;
+    opacity: 0;
+    -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+    transition: opacity 0.35s, transform 0.35s;
+    -webkit-transform: scale(0,1);
+    transform: scale(0,1);
+  }
+  
+  .header a.effect-underline:hover:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+  
+  
+  .header-right {
+    float: right;
+  }
+
+.under-header{
+  width: 100vw;
+  background-image: url('../img/purple-background\ copie.jpg');
+  background-size: 100vw;
+  background-repeat: no-repeat;
+  background-size: 100vw;
+  padding: 11.1vw 0vw;
+  z-index: -1;   
+}
+
+  @media screen and (max-width: 10vw) {
+    .header a {
+      float: none;
+      display: block;
+      text-align: left;
+    }
+    
+    .header-right {
+      float: none;
+    }
+  }

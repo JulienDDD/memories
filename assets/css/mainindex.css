@@ -1,0 +1,156 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap');
+
+html,body{
+  font-family: 'Open Sans', sans-serif;
+    margin: 0;
+}
+main{
+    background-color: #151231;
+}
+body{
+    color: aliceblue;
+}
+
+.img_stats{
+    width: 38vw;
+    border-radius: 3px;
+}
+
+.stats{
+    padding-left: 12vw;
+    display: flex;
+}
+.firststat{
+    background-color: #3724a0;
+    padding: 2vw;
+    border-radius: 3px;
+    text-align: center;
+    width: 14vw;
+    height: 7vw;
+    margin-right: 2vw;
+    padding-bottom: 3vw;
+    padding-top: 1vw;
+}
+.secstat{
+    background-color: #16a15f;
+    padding: 2vw;
+    border-radius: 3px;
+    text-align: center;
+    width: 14vw;
+    height: 7vw;
+    padding-bottom: 3vw;
+    padding-top: 1vw;
+
+}
+
+.topstats{
+    padding-left: 2vw;
+    padding-bottom: 2vw;
+    display: flex;
+
+}
+
+.botstats{
+    padding-left: 2vw;
+    display: flex;
+
+}
+
+.thirdstat{
+    background-color: #b91ca8;
+    padding: 2vw;
+    border-radius: 3px;
+    text-align: center;
+    width: 14vw;
+    height: 7vw;
+    margin-right: 2vw;
+    padding-bottom: 3vw;
+    padding-top: 1vw;
+}
+
+.fourthstat{
+    background-color: #ec9123;
+    padding: 2vw;
+    border-radius: 3px;
+    text-align: center;
+    width: 14vw;
+    height: 7vw;
+    padding-bottom: 3vw;
+    padding-top: 1vw;
+
+}
+
+.quatrestats{
+    font-size: 1.2vw;
+}
+
+.triplepaysages{
+    display: flex;
+    padding-left: 13vw ;
+    padding-right: 13vw;
+}
+
+
+.paysage2et3{
+    padding-left: 3vw;
+    display: flex;
+}
+
+
+.paysage3{
+    padding-left: 3vw;
+}
+
+.text123{
+    display: flex;
+
+    justify-content: center;
+}
+
+.text_number{
+    display: flex;
+
+}
+
+.number{
+    color: #3724a0;
+    font-size: 2vw;
+
+}
+
+.text{
+    padding-left: 2vw ;
+    width: 20vw;
+}
+
+h3{
+    font-size: 2vw;
+}
+
+.equipe123{
+    display: flex;
+    margin-left: 13vw;
+    margin-right: 13vw;
+    justify-content: center;
+    
+}
+
+.equipe {
+    background-color: #0c0b26;
+    margin: 1vw;
+    width: 30vw;
+    height: auto;
+    text-align: center;
+    padding-bottom: 2vw;
+}
+
+
+img{
+    display: inline-block;
+}
+.container{
+    justify-content: center;
+    margin-left: 3vw;
+    margin-right: 3vw;
+    margin-top: 2vw;
+}

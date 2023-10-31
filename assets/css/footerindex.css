@@ -1,0 +1,87 @@
+
+
+
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.mot_orange{
+    color: #ec9123;
+}
+
+.mot_gris{
+    color: #cab8c1;
+    font-size: 1vw;
+}
+
+.logo_marque{
+    background-color: #ec9123;
+    border: none;
+    border-radius: 2px;
+    width: 2.5vw;
+    height: 2.5vw;
+    color: aliceblue;
+    font-size: 1.5vw;
+    margin-right: 0.7vw;
+}
+
+.info {
+    flex: 1;
+    padding: 1.5vw;
+    background-color: #0c0b26;
+    margin: 1vw;
+    max-width: 50%;
+    margin-left: 14vw;
+}
+
+.list{
+    text-decoration: none;
+    color: #cab8c1;
+    font-size: 1vw;
+}
+
+.pom {
+    flex: 1;
+    padding: 1.5vw;
+    background-color: #0c0b26;
+    margin: 1vw;
+    max-width: 50%;
+}
+
+
+.pomtitre{
+    margin-left: 1.7vw;
+}
+
+@media (max-width: 768px) {
+    .info {
+        flex-direction: column;
+        align-items: center;
+        margin-left: 14vw;
+    }
+}
+
+.listpom {
+    padding: 0;
+    list-style: none;
+}
+.listpom li {
+    margin-bottom: 0.5vw;
+}
+
+.ancre{
+    margin-left: 92vw;
+    margin-right: 2vw;
+    background-color: #221326;
+    text-decoration: none;
+    width: 4vw;
+    height: 3.5vw;
+    text-align: center;
+}
+
+.ancre:hover{
+    background-color: #ec9123c3;
+}
