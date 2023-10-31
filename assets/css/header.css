@@ -2,91 +2,86 @@
 
 html,body{
   font-family: 'Open Sans', sans-serif;
-    margin: 0;
+  margin: 0;
 }
 
 .header {
- 
   margin-top: -10%;
   opacity: 0.9;
   z-index: 99;
   overflow: hidden;
   background-color: #151231;
   padding: 41px 90px;
-  }
-  .lien:hover{
-    border-top: 5px solid #ec9123 ;
-    color: #ec9123;
-  }
+}
 
-  .header a {
+.lien:hover{
+  border-top: 5px solid #ec9123 ;
+  color: #ec9123;
+}
 
-    float: left;
-    color: white;
-    text-align: center;
-    padding: 12px;
-    text-decoration: none;
-    font-size: 18px; 
-    line-height: 25px;
-    border-radius: 4px;
-  }
+.header a {
+  float: left;
+  color: white;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
 
-  .header a.logo {
-    font-size: 25px;
-    font-weight: bold;
-  }
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
 
-  .header a:hover {
+.header a:hover {
+  color: #F29522;
+}
 
-    color: #F29522;
-  }
-
-
-  .header-right {
-    float: right;
-  }
+.header-right {
+  float: right;
+}
 
 .under-header{
   width: 100%;
-    background-image: url('../img/purple-background.jpg');
-    background-size: cover;
-    padding: 100px 0px;
-    z-index: -1;
-    }
+  background-image: url('../img/purple-background\ copie.jpg');
+  background-size: cover;
+  padding: 100px 0px;
+  z-index: -1;
+}
 
-  @media screen and (max-width: 500px) {
-    .header a {
-      float: none;
-      display: block;
-      text-align: left;
-    }
-
-    .header-right {
-      float: none;
-    }
-
-    .header{
-      margin-top: -59%;
-    }
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
   }
 
-  @media screen and (max-width: 422px) {
-
-    .header{
-      margin-top: -69%;
-    }
+  .header-right {
+    float: none;
   }
 
-  @media screen and (max-width: 368px) {
-
-    .header{
-      margin-top: -77%;
-    }
+  .header{
+    margin-top: -59%;
   }
+}
 
-  @media screen and (max-width: 1100px) {
-
-    .header{
-      margin-top: -25%;
-    }
+@media screen and (max-width: 422px) {
+  .header{
+    margin-top: -69%;
   }
+}
+
+@media screen and (max-width: 368px) {
+  .header{
+    margin-top: -77%;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+
+  .header{
+    margin-top: -25%;
+  }
+}
