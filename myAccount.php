@@ -11,7 +11,7 @@
         <br>
         <br>
         <div class="block-container" style="justify-content: center;">
-            <div class="block" style="width: 70%; height: 600px;">
+            <div class="block" style="width: 70%; height: 47vw;">
             <br>
             <br>
             <center><div class="circle-icon"><i class="fa-solid fa-user"></i></div>
@@ -44,6 +44,11 @@
                 </form>
                 </div>
             </div>
+            <div class="file-upload">
+                <label for="file">Choisir une image :</label>
+                <input type="file" id="file" name="file">
+            </div>
+
             </div>
         </div>
     </main>
