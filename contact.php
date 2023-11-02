@@ -1,4 +1,19 @@
-<?php require_once("utils/common.php") ?>
+<?php require_once("utils/common.php");
+
+if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['submitcontact']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['nom']) && !empty($_POST['message']))
+{
+$to = "EMAIL DE L ADMIN";
+$headers = "From: ".$_POST['nom']."<".$_POST['email'].">";
+$subject = $_POST['subject'];
+$message = $_POST['message'];
+
+mail($to, $subject, $message, $headers);
+
+
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <?= require_once(SITE_ROOT."partials/head.php");?>
@@ -45,19 +60,21 @@
 
             
         </div>
+        <form method="POST">
         <div class="contact-form" style="margin-left: 8.7%;">
             <div class="namemail">
-                <input type="text" placeholder="Nom" name="Nom">
+                <input type="text" placeholder="Nom" name="nom">
                 <input type="text" placeholder="Email" name="email">
             </div>
         <br>
             <input style="width: 36.7%;" type="text" placeholder="Sujet" name="subject">
             <br><br>
-            <textarea style="width: 37.7%; color: white; padding: 10px;" placeholder="Message" class="namemail"></textarea>
+            <textarea style="width: 37.7%; color: white; padding: 10px;" name="message" placeholder="Message" class="namemail"></textarea>
             <br>
-            <button class="button1234">Envoyer</button>
+            <button type="submit" name="submitcontact" class="button1234">Envoyer</button>
         <br><br>
         </div> 
+        </form>
 
 
         
