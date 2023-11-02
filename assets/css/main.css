@@ -277,7 +277,7 @@ font-size: 30px;
 }
 
 .button_validation_inscription:hover {
-background-color: rgb(18, 149, 25);
+background-color: #ec92249e;
 }
 
 
@@ -288,6 +288,7 @@ background-color: rgb(18, 149, 25);
     color: #fff;
     text-decoration: none;
     border-radius: 2px;
+    height: 3em;
 }
 .email {
     width: 100px; 
@@ -356,7 +357,7 @@ h1 {
     margin-right: 350px; /* Décalage de 20 pixels vers la gauche */
     padding: 10px;
     width: 100px;
-    height: 30px;
+    height: 50px;
 }
 
 

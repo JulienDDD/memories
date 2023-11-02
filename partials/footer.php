@@ -2,7 +2,7 @@
                 <div class="footer-content">
                     <div class="info">
                         <div class="miniinfo">
-                            <h4 style="font-size: 1.4vw;">Informations</h4>
+                            <h4 style="font-size: 1.4vw; color:aliceblue">Informations</h4>
                             <p class="mot_gris">Quisque commodo facilisis purus,</p>
                             <p class="mot_gris"><span class="mot_orange">Tel :</span> 06 66 66 66 66</p>
                             <p class="mot_gris"><span class="mot_orange">Email :</span> support@powerofmemory.com</p>
@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <div class="pom">
-                        <div class="pomtitre"> <h4 style="font-size: 1.4vw;">Power of Memory</h4></div>
+                        <div class="pomtitre"> <h4 style="font-size: 1.4vw; color:aliceblue">Power of Memory</h4></div>
                         <div class="listpom">
                             <ul>
                                 <li style="color: #ec9123; list-style-type: square;"><a href="jeu.html" class="list">Jouer !</a></li>

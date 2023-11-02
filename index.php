@@ -45,7 +45,7 @@ $maxscore = $result->maxscore;
                     <div class="header">
                     <a href="index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
                     <div class="header-right">
-                    <a href="index.php" class="lien">Accueil</a>
+                    <a href="index.php" class="lien" style="color:#ec9123">Accueil</a>
                     <a href="games/memory/index.php" class="lien">Jeu</a>
                     <a href="games/memory/scores.php" class="lien">Scores</a>
                     <a href="login.php" class="lien">Connexion</a>

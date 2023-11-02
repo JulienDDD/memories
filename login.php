@@ -17,7 +17,7 @@
           <input type="password" name="passe" id="mdp" placeholder="  Mot de passe" style="height: 25px; width: 450px; font-size: 1.1em; "/></center>
           </br>
           <center>
-          <button type="submit" name="loginme" class="button_validation_inscription">Connexion</button>
+          <button type="submit" name="loginme" class="button_validation_inscription" style='height:3em;'>Connexion</button>
           <br><br>
           </center>
           </br> </br> </br> 

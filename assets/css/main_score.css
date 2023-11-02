@@ -24,10 +24,9 @@ html,body{
 }
 
 .button_validation_inscription:hover {
-background-color:#ec912385;
-}
-
-
+    background-color: #ec92249e;
+    }
+    
 .button_validation_inscription {
     margin-right: 35vw; /* Décalage de 20 pixels vers la gauche */
     padding: 10vw;
@@ -75,7 +74,7 @@ h1 {
     margin-right: 26vw; /* Décalage de 20 pixels vers la gauche */
     padding: 1vw;
     width: 7vw;
-    height: 3vw;
+    height: 4vw;
 
 }
 
