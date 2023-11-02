@@ -1,3 +1,4 @@
+<?php require_once('../../utils/common.php') ?>
 <!DOCTYPE html>
   <html lang="fr">
     <head>
@@ -17,7 +18,7 @@
         <a href="../../index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
         <div class="header-right">
         <a href="../../index.php" class="lien">Accueil</a>
-        <a href="index.php" class="lien">Jeu</a>
+        <a href="index.php" class="lien" style="color:#ec9123">Jeu</a>
         <a href="scores.php" class="lien">Scores</a>
         <a href="../../login.php" class="lien">Connexion</a>
         <a href="../../register.php" class="lien">Inscription</a>
