@@ -1,10 +1,124 @@
+<?php 
+require_once('utils/common.php'); 
+require_once(SITE_ROOT.'utils/database.php'); 
+require_once(SITE_ROOT.'utils/funcs.php');
 
-<?php require_once("utils/common.php") ?>
+$pdo = connectToDbAndGetPdo();
+
+if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['editpwd']))
+{
+    if(!empty($_POST['old_pass']) && !empty($_POST['newpassword']) && !empty($_POST['newpasswordconfirm']) && $_POST['newpassword'] == $_POST['newpasswordconfirm'] )
+    {
+    // requete pour acceder au mot de passe actuel
+     $stmt = $pdo->prepare('SELECT player_password FROM players WHERE id_player=:idp');
+     $stmt->execute(
+        [   
+            ':idp' => $_SESSION['user']['id']
+        ]);
+
+        $results = $stmt->fetch();
+
+        if(password_verify($_POST['old_pass'],$results->player_password))
+        {
+            // SI ANCIEN MDP VALIDE 
+            $newPassword = $_POST['newpassword'];
+            $hashedNewPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+            $stmt = $pdo->prepare('UPDATE players SET player_password = :newpassword WHERE id_player = :idp ');
+            $stmt = $stmt->execute(
+                [
+                    ":newpassword" => $hashedNewPassword,
+                    ":idp" => $_SESSION['user']['id']
+
+                ]
+                );
+
+            sendMessage('success', 'Un nouveau mot de passe vous a été défini', "myAccount.php");
+
+
+        }
+        else{
+            // ERREUR ANCIEN MDP INVALIDE
+
+
+        }
+
+
+
+
+    }
+    else{
+        // ERREUR
+    }
+
+}
+
+if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['editmail']) && !empty($_POST['old_email']) && !empty($_POST['new_email']) )
+{
+
+    // requete pour acceder au mot de passe et mail actuel
+     $stmt = $pdo->prepare('SELECT player_password, email FROM players WHERE id_player=:idp');
+     $stmt->execute(
+        [   
+            ':idp' => $_SESSION['user']['id']
+        ]);
+
+        $results = $stmt->fetch();
+
+        if(password_verify($_POST['passwordconfirmation'],$results->player_password) && $_POST['old_email'] == $results->email)
+        {
+            // SI MDP VALIDE & ancien mail valide
+
+            $stmt = $pdo->prepare('UPDATE players SET email=:newemail WHERE id_player=:idp');
+            $stmt = $stmt->execute(
+                [
+                    ":newemail" => $_POST['new_email'],
+                    "idp" => $_SESSION['user']['id']
+
+                ]
+                );
+
+                sendMessage('success', 'Nouvelle adresse e-mail definie', "myAccount.php");
+
+
+        }
+        else{
+            // ERREUR ANCIEN MDP INVALIDE
+
+
+        }
+
+
+
+
+
+}
+
+
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
-<?= require_once(SITE_ROOT."partials/head.php");?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href ="assets/css/main.css">
+    <link rel="stylesheet" href ="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footerindex.css">
+    <link rel="stylesheet" href="assets/css/footerindex.css">
+    <script src="https://kit.fontawesome.com/fd7b39a087.js" crossorigin="anonymous"></script>
+    <title>Z</title>
+</head>
 <body style="background-color: #151231; background-size: 1520px 800px;">
-<?= require_once(SITE_ROOT.'partials/header.php')?>
+    <?php require_once(SITE_ROOT.'partials/header.php'); ?>
+        </br></br></br>
+          <center><br><h1 style="margin-top: 0px; display: block;">INSCRIPTION</h1></center>
+        </div>
+
 
 
     <main>
@@ -18,7 +132,7 @@
             <p style="color: white;">MON ESPACE</p>
             <div class="container-forms">
                 <div class="passwordformcontainer">
-                    <form action="actions/editpassword.php" method="POST">
+                    <form  method="POST">
                         <center><p style="color: white; font-size: 1.5em;">Reinitialiser mon mot de passe</p></center>
                         <input style="width: 70%;" type="password" placeholder="Ancien mot de passe" name="old_pass">
                         <br><br>
@@ -26,13 +140,13 @@
                         <br><br>
                         <input style="width: 70%;" type="password" placeholder="Confirmer nouveau mot de passe" name="newpasswordconfirm">
                         <br><br>
-                        <center><button type="submit" style="width: 60%; height:40px; border: none;" class="espace-button">Modifier mon mot de passe</button></center>
+                        <center><button type="submit" name="editpwd" style="width: 60%; height:40px; border: none;" class="espace-button">Modifier mon mot de passe</button></center>
                     </form>
                     <br><br><br><br> 
                 </div>
                 <div class="divider"></div>
                 <div class="emailformcontainer">
-                <form action="actions/editemail.php" method="POST">
+                <form  method="POST">
                     <center><p style="color: white; font-size: 1.5em;">Modifier mon adresse e-mail</p></center>
                     <input style="width: 70%;" type="email" placeholder="Ancien email" name="old_email">
                     <br><br>
@@ -40,7 +154,7 @@
                     <br><br>
                     <input style="width: 70%;" type="password" placeholder="Mot de passe" name="passwordconfirmation">
                     <br><br>
-                    <center><button type="submit" style="width: 60%; height:40px; border: none;" class="espace-button">Modifier mon mot de passe</button></center>
+                    <center><button type="submit" name="editmail" style="width: 60%; height:40px; border: none;" class="espace-button">Modifier mon mot de passe</button></center>
                 </form>
                 </div>
             </div>

@@ -21,7 +21,7 @@ function sendMessage($messagetype, $message, $redirection)
     }
 
     $_SESSION['msgsent'] = $message;
-    header('Location: ../'.$redirection);
+    header('Location: '.$redirection);
     exit();
 }
 

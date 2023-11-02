@@ -42,8 +42,9 @@ if (
 
         ]);
 
-        sendMessage('success', 'Votre compte a été créer !', 'login.php');
-    } else {
+        sendMessage('success', 'Votre compte a été créer !', '../login.php');
+    } 
+    else {
 
         echo 'Il existe deja un utilisater portant ce pseudonyme';
     }
@@ -54,7 +55,7 @@ if (
 ) {
     // SINON SI L UTILISATEUR SE CONNECTE
     $pdo = connectToDbAndGetPdo();
-    $stmt = $pdo->prepare('SELECT email, player_password FROM players WHERE email=:email');
+    $stmt = $pdo->prepare('SELECT id_player,pseudo,email, player_password FROM players WHERE email=:email');
     $stmt->execute([
         ":email" => $_POST['email']
     ]);
@@ -69,7 +70,7 @@ if (
 "pseudo" => $userPseudo
         ];
 
-        sendMessage('success', 'Vous êtes connecté', 'myAccount.php');
+        sendMessage('success', 'Vous êtes connecté', '../myAccount.php');
     }
     else{
 
