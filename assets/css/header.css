@@ -11,7 +11,7 @@ html,body{
   z-index: 99;
   overflow: hidden;
   background-color: #151231;
-  padding: 41px 90px;
+  padding: 10vw 100vw;
 }
 
 .lien:hover{
@@ -23,11 +23,10 @@ html,body{
   float: left;
   color: white;
   text-align: center;
-  padding: 12px;
+  padding: 1vw;
   text-decoration: none;
-  font-size: 18px; 
-  line-height: 25px;
-  border-radius: 4px;
+  font-size: 1vw; 
+  line-height: 3vw;
 }
 
 .header a.logo {
@@ -41,13 +40,14 @@ html,body{
 
 .header-right {
   float: right;
+  margin-right: -3vw;
 }
 
 .under-header{
   width: 100%;
   background-image: url('../img/purple-background\ copie.jpg');
   background-size: cover;
-  padding: 100px 0px;
+  padding: 5vw 0px;
   z-index: -1;
 }
 
