@@ -22,4 +22,4 @@ $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
   </div>
   </br></br></br>
   <center><br><h1 style="margin-top: 0px; display: block;">The Power Of Memory</h1></center>
-</div>
+</div>  
