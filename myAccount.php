@@ -45,7 +45,7 @@
                 </div>
             </div>
             <div class="file-upload">
-                <label for="file">Choisir une image :</label>
+                <label for="file">Choisir une image</label>
                 <input type="file" id="file" name="file">
             </div>
 
