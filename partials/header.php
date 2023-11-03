@@ -1,9 +1,9 @@
+
 <?php
-session_start();
 $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
 ?>
 <div class="under-header" id="top">        
-  <div class="header " style="margin-top:-13vw">    
+  <div class="header " style="margin-top:-11.5vw">    
     <a href="index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
     <div class="header-right">
       <a href="index.php" class="lien">Accueil</a>
@@ -15,7 +15,7 @@ $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
       <a href="contact.php" class="lien" <?php if($_SESSION['currentPage'] == '/COURSES/powerofmemory/memories/contact.php'): ?> style="color: #EC9224;" <?php endif ?>>Nous contacter</a>
       <?php 
       if (isset($_SESSION['user'])) {
-          echo '<a href="disconnect.php" class="lien">'.$_SESSION['user']['pseudo'].'</a>';
+        echo '<a href="disconnect.php" class="lien">'.$_SESSION['user']["pseudo"].'</a>';
       }
       ?>
     </div>
