@@ -1,4 +1,18 @@
-<?php require_once("utils/common.php") ?>
+<?php require_once("utils/common.php");
+
+if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['submitcontact']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['nom']) && !empty($_POST['message']))
+{
+$to = "EMAIL DE L ADMIN";
+$headers = "From: ".$_POST['nom']."<".$_POST['email'].">";
+$subject = $_POST['subject'];
+$message = $_POST['message'];
+
+mail($to, $subject, $message, $headers);
+
+}
+
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <?= require_once(SITE_ROOT."partials/head.php");?>

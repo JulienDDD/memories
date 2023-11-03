@@ -59,7 +59,7 @@ $maxscore = $result->maxscore;
                     ?>
                         </div>
                     </div>
-                    <br>
+    <br>
 
                     <div class="titreprinc">
                         <center><h1 style="color: rgb(255, 255, 255); font-size: 5vw;">BIENVENUE DANS <br> NOTRE STUDIO !</h1></center>
@@ -69,11 +69,11 @@ $maxscore = $result->maxscore;
                 </div>
             </header>
             <main>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+<br>
+<br>
+<br>
+<br>
+<br>
                 <div class="triplepaysages">
                     <div class="paysage1"><img src="assets/img/zelda.jpeg" style="width: 37vw;"></div>
                     <div class="paysage2et3">
@@ -126,14 +126,7 @@ $maxscore = $result->maxscore;
                         </div>
                     </div>
                 </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+                <br><br><br><br><br><br><br><br>
                 <div class="stats">
                     <div class="div_img_stats"><img src="assets/img/GTA.jpeg" class="img_stats"></div>
                     <div class="quatrestats">
@@ -144,7 +137,7 @@ $maxscore = $result->maxscore;
                             </div>
 
                             <div class="secstat">
-                                <h2 style="font-size: 2.5vw;">1020</h2>
+                                <h2 style="font-size: 2.5vw;">1</h2>
                                 <h4 style="margin-top: -2vw;">Joueurs connectés</h4>
                             </div>
                         </div>
@@ -160,16 +153,8 @@ $maxscore = $result->maxscore;
                             </div>
                         </div>
                     </div>
-                </div>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
+                </div><br>
+                <br><br><br><br><br><br><br><br>
                 <center><h2 style="font-size: 3vw;">Notre Équipe</h2></center>
                 <center><p style="color: #cab8c1; font-size: 1.2vw;">Ouisque commodo facilisis purus, interdum volutoat arcu viverra sed</p></center>
                 <center><img src="assets/img/mini_logo.png" style="width: 12vw;"></center>
@@ -194,9 +179,7 @@ $maxscore = $result->maxscore;
                         <i class="fa-brands fa-facebook" style="padding: 0.5vw;font-size: 1.3vw;"></i><i class="fa-brands fa-twitter" style="padding: 0.5vw; font-size: 1.3vw;"></i><i class="fa-brands fa-pinterest" style="padding: 0.5vw; font-size: 1.3vw;"></i>
                     </div>
                 </div>
-                <br>
-                <br>
-                <br>
+            <br><br><br>
             </main>
             <footer style="background-color: #0c0b26;">
                 <div class="footer-content">
@@ -227,11 +210,11 @@ $maxscore = $result->maxscore;
                         </div>
                     </div>
                 </div>
-                <br>
-                <br>
-                <br>
+<br>
+<br>
+<br>
                 <p class="mot_gris" style="margin-left: 13.5vw;">Copyright © 2022 Tous droits réservés</p>
-                <br>
+<br>
             </footer>
         </body>
     </html>
