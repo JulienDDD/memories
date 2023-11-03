@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../assets/css/main.css">
 <?php
 require_once("common.php");
 require_once(SITE_ROOT . "utils/funcs.php");
@@ -47,9 +48,10 @@ if (
 
         echo 'Il existe deja un utilisater portant ce pseudonyme';
     }
+
 } elseif (
     $_SERVER['REQUEST_METHOD'] == "POST" &&
-    isset($_POST['loginme'], $_POST['email'], $_POST['passe']) &&
+    isset($_POST['loginme']) &&
     !empty($_POST['email']) && !empty($_POST['passe'])
 ) {
     // SINON SI L UTILISATEUR SE CONNECTE
@@ -72,6 +74,7 @@ if (
         sendMessage('success', 'Vous êtes connecté', 'myAccount.php');
     }
     else{
+        sendMessage('error', 'Connection échouée', 'myAccount.php');
 
     }
 

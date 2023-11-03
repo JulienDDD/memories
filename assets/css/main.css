@@ -685,4 +685,13 @@ left: 0;
 }
 
 
+.message-error{
+    color: rgb(255, 0, 0);
+    text-align: center;
+}
 
+
+.message-success{
+    color: green;
+    text-align: center;
+}
