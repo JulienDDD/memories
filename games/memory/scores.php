@@ -1,4 +1,9 @@
-<?php require_once('../../utils/common.php')?>
+<?php 
+require_once('../../utils/common.php');
+require_once(SITE_ROOT.'utils/database.php');
+$_SESSION['currentPage'] = "scores";
+$pdo = connectToDbAndGetPdo();
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -11,30 +16,30 @@
     <script src="https://kit.fontawesome.com/fd7b39a087.js" crossorigin="anonymous"></script>
 </head>
 <body style="background-color: #151231; background-size: 1520px 800px;">
-    <div class="under-header" id="top">        
+<div class="under-header" id="top">        
     
-        <div class="header">
-            
-        <a href="../../index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
-        <div class="header-right">
-        <a href="../../index.php" class="lien">Accueil</a>
-        <a href="index.php" class="lien">Jeu</a>
-        <a href="scores.php" class="lien" style="color:#ec9123">Scores</a>
-        <a href="../../login.php" class="lien">Connexion</a>
-        <a href="../../register.php" class="lien">Inscription</a>
-        <a href="../../myAccount.php" class="lien">Mon espace</a>
-        <a href="../../contact.php" class="lien">Nous contacter</a>
-        <?php 
-          if (isset($_SESSION['user'])) {
-            echo '<a href="disconnect.php" class="lien">'.$_SESSION['user']["pseudo"].'</a>';
-          }
-          ?>
-            </div>
-            
-          </div>
-        </br></br></br>
-          <center><br><h1 style="margin-top: 0px; display: block;">The Power Of Memory</h1></center>
+    <div class="header">
+        
+    <a href="../../index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
+    <div class="header-right">
+    <a href="../../index.php" class="lien">Accueil</a>
+    <a href="index.php" class="lien">Jeu</a>
+    <a href="scores.php" class="lien" style="color:#ec9123">Scores</a>
+    <a href="../../login.php" class="lien">Connexion</a>
+    <a href="../../register.php" class="lien">Inscription</a>
+    <a href="../../myAccount.php" class="lien">Mon espace</a>
+    <a href="../../contact.php" class="lien">Nous contacter</a>
+    <?php 
+      if (isset($_SESSION['user'])) {
+        echo '<a href="disconnect.php" class="lien">'.$_SESSION['user']["pseudo"].'</a>';
+     }
+    ?>
         </div>
+        
+      </div>
+    </br></br></br>
+      <center><br><h1 style="margin-top: 0px; display: block;">The Power Of Memory</h1></center>
+    </div>
 
     
       
@@ -54,44 +59,60 @@
       </table>
       </center>
 
+<?php 
 
-      <div class="flex-container">
+
+
+?>
+<div class="flex-container">
+        <form method="GET">
+      <input style="font-size: 13px;width: 22.9%;" type="text" placeholder="Recherche par nom d'utilisateur" name="usernametofind">
+      <button type="submit" name="submitsearch" style="width: 22.9%; height:40px; border: none; background-color:#ec9123;" class="espace-button"><i class="fa-solid fa-magnifying-glass"></i></button>
+</form>
         <div class="flex-row">
           <div class="flex-header">pseudos joueurs</div>
           <div class="flex-header">levels</div>
           <div class="flex-header">scores</div>
           <div class="flex-header">dates</div>
         </div>
-        <div class="flex-row">
-          <div class="flex-data">Baptista</div>
-          <div class="flex-data">2</div>
-          <div class="flex-data">30</div>
-          <div class="flex-data">18/10/2023 10:12</div>
+
+
+        <?php
+if($_SERVER['REQUEST_METHOD'] == "GET" && isset($_GET['submitsearch']) && isset($_GET['usernametofind']))
+{
+$stmt = $pdo->prepare('SELECT *
+FROM scores as s
+LEFT JOIN players AS p
+	ON p.id_player = s.id_player
+WHERE p.pseudo LIKE "%":username"%"');
+$results = $stmt->execute([
+  ":username" => $_GET['usernametofind']
+]);
+}
+else{
+  $stmt = $pdo->prepare('SELECT S.*, P.* 
+  FROM scores AS S
+  LEFT JOIN players AS P ON S.id_player = P.id_player');
+  $results = $stmt->execute();
+
+}
+$results = $stmt->fetchAll();
+
+
+
+foreach($results as $result)
+{
+  
+        ?>
+        <div class="flex-row" <?php if($result->id_player == $_SESSION['user']['id']){ echo 'style="background-color: yellow;"'; } ?> >
+          <div class="flex-data"><?php echo $result->pseudo; ?></div>
+          <div class="flex-data"><?php echo $result->game_strength; ?></div>
+          <div class="flex-data"><?php echo $result->game_score; ?></div>
+          <div class="flex-data"><?php echo $result->game_date; ?></div>
         </div>
-        <div class="flex-row">
-          <div class="flex-data">jouyoukim</div>
-          <div class="flex-data">2</div>
-          <div class="flex-data">20</div>
-          <div class="flex-data">18/10/2023 10:12</div>
-        </div>
-        <div class="flex-row">
-        <div class="flex-data">licornes</div>
-        <div class="flex-data">2</div>
-        <div class="flex-data">20</div>
-         <div class="flex-data">18/10/2023 10:12</div>
-        </div>
-        <div class="flex-row">
-            <div class="flex-data">i miss you</div>
-            <div class="flex-data">2</div>
-            <div class="flex-data">60</div>
-             <div class="flex-data">18/10/2023 10:12</div>
-            </div>
-        <div class="flex-row">
-        <div class="flex-data">omen</div>
-            <div class="flex-data">2</div>
-            <div class="flex-data">50</div>
-             <div class="flex-data">18/10/2023 10:12</div>
-            </div></div>
+<?php } ?>
+       
+          </div>
       
       
           </br> </br> </br> </br>   
