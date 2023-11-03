@@ -64,7 +64,7 @@ $maxscore = $result->maxscore;
                     <div class="titreprinc">
                         <center><h1 style="color: rgb(255, 255, 255); font-size: 5vw;">BIENVENUE DANS <br> NOTRE STUDIO !</h1></center>
                         <center><h3 style="color: #cab8c1; font-size: 1vw;">Venez challenger les cerveaux les plus agiles!</h3></center>
-                        <center><a href="inscription.html"><button onclick="window.location.href = '';" class="bouton_jouer" type="button">JOUER !</button></a></center>
+                        <center><a href="games/memory/index.php"><button onclick="window.location.href = '';" class="bouton_jouer" type="button">JOUER !</button></a></center>
                     </div>
                 </div>
             </header>

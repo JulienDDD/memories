@@ -20,9 +20,9 @@
                         <div class="pomtitre"> <h4 style="font-size: 1.4vw; color:aliceblue">Power of Memory</h4></div>
                         <div class="listpom">
                             <ul>
-                                <li style="color: #ec9123; list-style-type: square;"><a href="jeu.html" class="list">Jouer !</a></li>
-                                <li style="color: #ec9123; list-style-type: square;"><a href="score.html" class="list">Les scores</a></li>
-                                <li style="color: #ec9123; list-style-type: square;"><a href="contact.html" class="list">Nous contacter</a></li>
+                                <li style="color: #ec9123; list-style-type: square;"><a href="games/memory/index.php" class="list">Jouer !</a></li>
+                                <li style="color: #ec9123; list-style-type: square;"><a href="games/memory/score.php" class="list">Les scores</a></li>
+                                <li style="color: #ec9123; list-style-type: square;"><a href="contact.php" class="list">Nous contacter</a></li>
                             </ul>
                         </div>
                     </div>

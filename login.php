@@ -5,7 +5,8 @@
     <body style="background-color: #151231; background-size: 1520px 800px;"></body>
       <?= require_once(SITE_ROOT.'partials/header.php')?>
       <section>
-        </br> </br> </br> </br>         <form method="POST" action="utils/userConnexion.php">
+        </br> </br> </br> </br>         
+        <form method="POST" action="utils/userConnexion.php">
           <?php if(isset($_SESSION['msgsent'])){ echo $_SESSION['msgsent']; unset($_SESSION['msgsent']);} ?>
           <div class="input-container"></div>
           <center><label for="email"></label>
