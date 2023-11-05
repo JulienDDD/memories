@@ -93,26 +93,10 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['editmail']) && !empty($
 
 
         }
-}
 
 
-if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['goupload'], $_FILES['filepicture']))
-{
 
 
-    $userId = $_SESSION['user']['id'];
-    $uploadDirectory = "userFiles/$userId/";
-    
-    if (!file_exists($uploadDirectory)) {
-        mkdir($uploadDirectory, 0777, true);
-    }
-    
-    $targetFile = $uploadDirectory . "profilepicture.png";
-    if (move_uploaded_file($_FILES['filepicture']['tmp_name'], $targetFile)) {
-        sendMessage('success', "La photo de profil a été définie", "myAccount.php");
-    } else {
-      sendMessage('error', "Probleme lors de lupload de la photo", "myAccount.php");
-    }
 
 }
 
@@ -164,20 +148,12 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['goupload'], $_FILES['fi
                     <center><button type="submit" style="width: 60%; height:40px; border: none;" class="espace-button">Modifier mon mot de passe</button></center>
                 </form>
                 </div>
-
-                
             </div>
-<form method="POST"> 
             <div class="file-upload">
-
-<label for="file">Photo de profil</label>
-<input type="file" id="file" name="filepicture">
-</div>
-<br><br>
-<button type="submit" name="goupload" style="width: 20%; height:40px; border: none; margin-top: -50 px;" class="espace-button">Definir ma photo de profil</button>
-</form>
+                <label for="file">Choisir une image :</label>
+                <input type="file" id="file" name="file">
+            </div
             </div>
-            
         </div>
     </main>
 

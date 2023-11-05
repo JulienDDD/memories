@@ -46,7 +46,7 @@ if (
         sendMessage('success', 'Votre compte a été créer !', 'login.php');
     } else {
 
-        sendMessage('success', 'Il existe deja un utilisateur avec ce pseudonyme', 'register.php');
+        echo 'Il existe deja un utilisater portant ce pseudonyme';
     }
 
 } elseif (
@@ -74,7 +74,7 @@ if (
         sendMessage('success', 'Vous êtes connecté', 'myAccount.php');
     }
     else{
-        sendMessage('error', 'Connexion échouée', 'login.php');
+        sendMessage('error', 'Connection échouée', 'myAccount.php');
 
     }
 
@@ -85,6 +85,5 @@ if (
 
 
 } else {
-    sendMessage('error', 'Données incorrectes', 'login.php');
-
+    echo 'Les donnés reçus sont incorrectes';
 }

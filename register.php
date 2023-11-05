@@ -9,9 +9,7 @@
     </br>
     <form action="utils/userConnexion.php" method="post">
 
-    <?php if(isset($_GET['error'])){ echo '<center> <span style="color: red;">'.$_GET['error'].'</span></center>'; }
- if(isset($_SESSION['msgsent'])){ echo $_SESSION['msgsent']; unset($_SESSION['msgsent']);} 
-    ?>
+    <?php if(isset($_GET['error'])){ echo '<center> <span style="color: red;">'.$_GET['error'].'</span></center>'; }?>
 <div class="input-container"></div>
 <center><label for="email"></label>
     <input type="text" id="email" name="email" placeholder="  Email" style="height: 2vw; width: 31.5vw; font-size: 1.1vw; " required> </center>
