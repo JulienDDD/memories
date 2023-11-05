@@ -67,8 +67,8 @@ if (
     if(password_verify($_POST['passe'], $hashedPassword))
     {
         $_SESSION['user'] = [
-"id" => $userId,
-"pseudo" => $userPseudo
+            "id" => $userId,
+            "pseudo" => $userPseudo
         ];
 
         sendMessage('success', 'Vous êtes connecté', 'myAccount.php');

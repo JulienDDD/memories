@@ -1,5 +1,6 @@
 
 <?php
+session_start();
 $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
 ?>
 <div class="under-header" id="top">        
