@@ -1,11 +1,4 @@
-<?php require_once('../../utils/common.php');
-require_once(SITE_ROOT.'utils/funcs.php');
-
-if(!isset($_SESSION['user'])){
-  sendMessage("error", "Veuillez vous connecter", "../login.php");
-}
-
-?>
+<?php require_once('../../utils/common.php') ?>
 <!DOCTYPE html>
   <html lang="fr">
     <head>

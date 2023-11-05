@@ -2,12 +2,11 @@
 
 <?php 
 require_once('../../utils/common.php');
-require_once('../../utils/funcs.php');
 require_once(SITE_ROOT.'utils/database.php');
 $_SESSION['currentPage'] = "scores";
 $pdo = connectToDbAndGetPdo();
 if(!isset($_SESSION['user'])){
-  sendMessage("error", "Veuillez vous connecter", "../login.php");
+  sendMessage("error", "Veuillez vous connecter", "../../login.php");
 }
 ?>
 <!DOCTYPE html>
