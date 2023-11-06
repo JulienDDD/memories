@@ -1,4 +1,5 @@
 <?php require_once("utils/common.php") ?>
+test
 <!DOCTYPE html>
 <html lang="fr">
 <?= require_once(SITE_ROOT."partials/head.php");?>
@@ -38,13 +39,7 @@
       <div style="width: 23%;"><a style="margin-top: 2vh;float:right; color: white; font-size: 19px;" ><i class="fa-solid fa-circle-xmark"></i></a></div>
     </div>
    
-    <div class="bubble left">Salut comment tu vas ?</div>
-<div class="bubble right">Ca va et toi</div>
-<div class="bubble left">Ca va</div>
-<div class="bubble right">👌</div>
-<div class="bubble right">Cool, blc</div>
-<div class="bubble right">Bonne journée</div>
-<center><span style="color: red;">Cet utilisateur vous a bloqué</span></center>
+  
 <input type="text" style="width: 94.5%; height: 6%;border-radius: 0px;  position: fixed; bottom: 0;" placeholder="Saisissez votre message...">
   </div>
 

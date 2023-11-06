@@ -43,7 +43,9 @@ if (
 
         ]);
 
-        sendMessage('success', 'Votre compte a été créer !', 'login.php');
+        
+
+        sendMessage('success', 'Votre compte a été créer !', '../login.php');
     } else {
 
         echo 'Il existe deja un utilisater portant ce pseudonyme';
@@ -56,7 +58,7 @@ if (
 ) {
     // SINON SI L UTILISATEUR SE CONNECTE
     $pdo = connectToDbAndGetPdo();
-    $stmt = $pdo->prepare('SELECT * FROM players WHERE email=:email');
+    $stmt = $pdo->prepare('SELECT email, player_password FROM players WHERE email=:email');
     $stmt->execute([
         ":email" => $_POST['email']
     ]);
@@ -64,8 +66,7 @@ if (
     $hashedPassword = $concernedUser->player_password;
     $userPseudo = $concernedUser->pseudo;
     $userId = $concernedUser->id_player;
-    if(password_verify($_POST['passe'], $hashedPassword))
-    {
+    if (password_verify($_POST['passe'], $hashedPassword)) {
         $_SESSION['user'] = [
             "id" => $userId,
             "pseudo" => $userPseudo
@@ -74,7 +75,6 @@ if (
         sendMessage('success', 'Vous êtes connecté', 'myAccount.php');
     }
     else{
-        sendMessage('error', 'Connection échouée', 'myAccount.php');
 
     }
 

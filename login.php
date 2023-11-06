@@ -1,4 +1,6 @@
+
 <?php require_once("utils/common.php") ?>
+
 <!DOCTYPE html>
   <html lang="fr">
     <?= require_once(SITE_ROOT."partials/head.php");?>

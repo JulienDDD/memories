@@ -2,7 +2,7 @@
 <?php require_once("utils/common.php") ?>
 <?php require_once("utils/database.php") ?>
 <?php
-
+$_SESSION['currentPage'] = 'acceuil';
 /* INITIALISATION PDO DB */
 $pdo = connectToDbAndGetPdo();
 /* REQUETES DE COMPTAGE */
@@ -41,7 +41,7 @@ $maxscore = $result->maxscore;
                     <div class="header-right">
                         <a href="index.php" class="lien" style="color:#ec9123">Accueil</a>
                         <a href="games/memory/index.php" class="lien">Jeu</a>
-                        <a href="games/memory/scores.php" class="lien">Scores</a>
+                        <a href="scores.php" class="lien">Scores</a>
                         <a href="login.php" class="lien">Connexion</a>
                         <a href="register.php" class="lien">Inscription</a>
                         <a href="myAccount.php" class="lien">Mon espace</a>

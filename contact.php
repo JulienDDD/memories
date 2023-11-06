@@ -59,19 +59,21 @@ mail($to, $subject, $message, $headers);
 
             
         </div>
+        <form method="POST">
         <div class="contact-form" style="margin-left: 8.7%;">
             <div class="namemail">
-                <input type="text" placeholder="Nom" name="Nom">
+                <input type="text" placeholder="Nom" name="nom">
                 <input type="text" placeholder="Email" name="email">
             </div>
         <br>
             <input style="width: 36.7%;" type="text" placeholder="Sujet" name="subject">
             <br><br>
-            <textarea style="width: 37.7%; color: white; padding: 10px;" placeholder="Message" class="namemail"></textarea>
+            <textarea style="width: 37.7%; color: white; padding: 10px;" name="message" placeholder="Message" class="namemail"></textarea>
             <br>
-            <button class="button1234">Envoyer</button>
+            <button type="submit" name="submitcontact" class="button1234">Envoyer</button>
         <br><br>
         </div> 
+        </form>
 
 
         
