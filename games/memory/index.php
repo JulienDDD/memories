@@ -114,12 +114,7 @@ echo $_SESSION['currentPage'];
             <div style="width: 53%;display: flex;"><a id="closebtn" style="margin-top: 2vh;float:right; color: white; font-size: 19px;"><i class="fa-solid fa-circle-xmark"></i></a></div>
           </div>
          
-          <div class="bubble left">Salut comment tu vas ?</div>
-      <div class="bubble right">Ca va et toi</div>
-      <div class="bubble left">Ca va</div>
-      <div class="bubble right">Super</div>
-      <div class="bubble right">Parfait alors</div>
-      
+          
 
 
 

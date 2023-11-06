@@ -9,7 +9,6 @@ $message = $_POST['message'];
 
 mail($to, $subject, $message, $headers);
 
-
 }
 
 

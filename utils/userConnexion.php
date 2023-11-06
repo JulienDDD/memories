@@ -42,9 +42,10 @@ if (
 
         ]);
 
+        
+
         sendMessage('success', 'Votre compte a été créer !', '../login.php');
-    } 
-    else {
+    } else {
 
         echo 'Il existe deja un utilisater portant ce pseudonyme';
     }
@@ -63,25 +64,15 @@ if (
     $hashedPassword = $concernedUser->player_password;
     $userPseudo = $concernedUser->pseudo;
     $userId = $concernedUser->id_player;
-    if(password_verify($_POST['passe'], $hashedPassword))
-    {
+    if (password_verify($_POST['passe'], $hashedPassword)) {
         $_SESSION['user'] = [
-"id" => $userId,
-"pseudo" => $userPseudo
+            "id" => $userId,
+            "pseudo" => $userPseudo
         ];
 
         sendMessage('success', 'Vous êtes connecté', '../myAccount.php');
+    } else {
     }
-    else{
-
-    }
-
-
-
-
-
-
-
 } else {
     echo 'Les donnés reçus sont incorrectes';
 }

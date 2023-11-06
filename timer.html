@@ -1,0 +1,32 @@
+
+
+
+<html>
+    <head>
+        <title>Timer</title>
+        <meta charset="utf8">
+    </head>
+
+    <body>
+        <p>Temps écoulés <span id="timercontainer"></span></p>
+        <button id="startimer">Lancer le timer</button>
+    </body>
+
+
+    <script>
+        let timercontainer = document.getElementById('timercontainer');
+        let timerstarter = document.getElementById("startimer");
+        let secondes = 0;
+        timerstarter.addEventListener('click', function(){
+
+            window.setInterval(addTime, 1000);
+        });
+
+        function addTime(){
+
+            secondes ++;
+            timercontainer.innerText = secondes;
+        }
+
+    </script>
+</html>
