@@ -39,34 +39,21 @@
     
       <br/>
       <div class="choix">
-        <div class="choix_diff_global">
-          <div class="txtdiff"><h2>Choisissez une difficulté :</h2></div>
-          <div class="choixdiff123">
-            <div class="choixdiff">
-              <button class="button_choixdiff">4 x 4</button>
-            </div>
-            <div class="choixdiff">
-              <button class="button_choixdiff">8 x 8</button>
-            </div>
-            <div class="choixdiff">
-              <button class="button_choixdiff">12 x 12</button>
-            </div>
-          </div>
+        <div class="choix1et2">
+          <select style="width: 17vw ;margin: 1vw 10vw; background-color:#ec9123; padding:1vw; color:cornsilk; font-size:1em; text-align:center; border-radius:2px;">
+            <option value="">Choisissez un thème</option>
+            <option value="1">Thème 1</option>
+            <option value="2">Thème 2</option>
+            <option value="3">Thème 3</option>
+          </select>
         </div>
-        <div class="choix_theme_global">
-          <div class="txttheme"><h2>Choisissez un thème :</h2></div>
-          <div class="choixtheme123">
-            <div class="choixtheme">
-              <button class="button_choixtheme">Thème 1</button>
-            </div>
-            <div class="choixtheme">
-              <button class="button_choixtheme">Thème 2</button>
-            </div>
-            <div class="choixtheme">
-              <button class="button_choixtheme">Thème 3</button>
-
-            </div>
-          </div>
+        <div class="choix1et2">
+        <select style="width: 17vw ;margin: 1vw 10vw; background-color:#ec9123; padding:1vw; color:cornsilk; font-size:1em; text-align:center; border-radius:2px;">
+              <option value="">Choisissez une difficulté</option>
+              <option value="1">Difficulté 1</option>
+              <option value="2">Difficulté 2</option>
+              <option value="3">Difficulté 3</option>
+            </select>
         </div>
       </div>
       <div class="global_theme">
@@ -83,6 +70,8 @@
           <img src="../../assets/img/ex_theme3.png" class="img_theme">
         </div>
       </div>
+      <center><button style="background-color: #ec9123; text-decoration:none; color:cornsilk; padding:1.5vw; border-radius: 3px; border : none">LANCER LA PARTIE</button></center>
+      <br>
       <center><div class="border_jeu"></div></center>
       <br><br>
       <div class="jeu_carte">
