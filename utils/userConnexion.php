@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../assets/css/main.css">
 <?php
 require_once("common.php");
 require_once(SITE_ROOT . "utils/funcs.php");
@@ -49,14 +50,15 @@ if (
 
         echo 'Il existe deja un utilisater portant ce pseudonyme';
     }
+
 } elseif (
     $_SERVER['REQUEST_METHOD'] == "POST" &&
-    isset($_POST['loginme'], $_POST['email'], $_POST['passe']) &&
+    isset($_POST['loginme']) &&
     !empty($_POST['email']) && !empty($_POST['passe'])
 ) {
     // SINON SI L UTILISATEUR SE CONNECTE
     $pdo = connectToDbAndGetPdo();
-    $stmt = $pdo->prepare('SELECT id_player,pseudo,email, player_password FROM players WHERE email=:email');
+    $stmt = $pdo->prepare('SELECT email, player_password FROM players WHERE email=:email');
     $stmt->execute([
         ":email" => $_POST['email']
     ]);
@@ -70,9 +72,18 @@ if (
             "pseudo" => $userPseudo
         ];
 
-        sendMessage('success', 'Vous êtes connecté', '../myAccount.php');
-    } else {
+        sendMessage('success', 'Vous êtes connecté', 'myAccount.php');
     }
+    else{
+
+    }
+
+
+
+
+
+
+
 } else {
     echo 'Les donnés reçus sont incorrectes';
 }

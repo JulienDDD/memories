@@ -1,12 +1,3 @@
-<?php 
-require_once('../../utils/common.php');
-
-
-$_SESSION['currentPage'] = "jeu";
-
-echo $_SESSION['currentPage'];
-
-?>
 <!DOCTYPE html>
   <html lang="fr">
     <head>
@@ -19,39 +10,44 @@ echo $_SESSION['currentPage'];
       <script src="https://kit.fontawesome.com/fd7b39a087.js" crossorigin="anonymous"></script>
     </head>
     <body style="background-color: #151231; background-size: 1520px 800px;">
-  <?php require_once(SITE_ROOT.'partials/header.php'); ?>
+    <div class="under-header" id="top">        
+    
+        <div class="header">
+            
+        <a href="../../index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
+        <div class="header-right">
+        <a href="../../index.php" class="lien">Accueil</a>
+        <a href="index.php" class="lien">Jeu</a>
+        <a href="scores.php" class="lien">Scores</a>
+        <a href="../../login.php" class="lien">Connexion</a>
+        <a href="../../register.php" class="lien">Inscription</a>
+        <a href="../../myAccount.php" class="lien">Mon espace</a>
+        <a href="../../contact.php" class="lien">Nous contacter</a>
+            </div>
+            
+          </div>
+        </br></br></br>
+          <center><br><h1 style="margin-top: 0px; display: block;">The Power Of Memory</h1></center>
+        </div>
 
     
       <br/>
       <div class="choix">
-        <div class="choix_diff_global">
-          <div class="txtdiff"><h2>Choisissez une difficulté :</h2></div>
-          <div class="choixdiff123">
-            <div class="choixdiff">
-              <button class="button_choixdiff">4 x 4</button>
-            </div>
-            <div class="choixdiff">
-              <button class="button_choixdiff">8 x 8</button>
-            </div>
-            <div class="choixdiff">
-              <button class="button_choixdiff">12 x 12</button>
-            </div>
-          </div>
+        <div class="choix1et2">
+          <select style="width: 17vw ;margin: 1vw 10vw; background-color:#ec9123; padding:1vw; color:cornsilk; font-size:1em; text-align:center; border-radius:2px;">
+            <option value="">Choisissez un thème</option>
+            <option value="1">Thème 1</option>
+            <option value="2">Thème 2</option>
+            <option value="3">Thème 3</option>
+          </select>
         </div>
-        <div class="choix_theme_global">
-          <div class="txttheme"><h2>Choisissez un thème :</h2></div>
-          <div class="choixtheme123">
-            <div class="choixtheme">
-              <button class="button_choixtheme">Thème 1</button>
-            </div>
-            <div class="choixtheme">
-              <button class="button_choixtheme">Thème 2</button>
-            </div>
-            <div class="choixtheme">
-              <button class="button_choixtheme">Thème 3</button>
-
-            </div>
-          </div>
+        <div class="choix1et2">
+        <select style="width: 17vw ;margin: 1vw 10vw; background-color:#ec9123; padding:1vw; color:cornsilk; font-size:1em; text-align:center; border-radius:2px;">
+              <option value="">Choisissez une difficulté</option>
+              <option value="1">Difficulté 1</option>
+              <option value="2">Difficulté 2</option>
+              <option value="3">Difficulté 3</option>
+            </select>
         </div>
       </div>
       <div class="global_theme">
@@ -68,15 +64,9 @@ echo $_SESSION['currentPage'];
           <img src="../../assets/img/ex_theme3.png" class="img_theme">
         </div>
       </div>
+      <center><button style="background-color: #ec9123; text-decoration:none; color:cornsilk; padding:1.5vw; border-radius: 3px; border : none">LANCER LA PARTIE</button></center>
+      <br>
       <center><div class="border_jeu"></div></center>
-
-  
-
-
-  
-      
-   
-      
       <br><br>
       <div class="jeu_carte">
         <div class="ligne_jeu">
@@ -84,9 +74,7 @@ echo $_SESSION['currentPage'];
           <img src="../../assets/img/dos_carte.png" class="dos_carte">
           <img src="../../assets/img/dos_carte.png" class="dos_carte">
           <img src="../../assets/img/dos_carte.png" class="dos_carte">
-
         </div>
-        <div class="jeu_carte">
           <div class="ligne_jeu">
             <img src="../../assets/img/dos_carte.png" class="dos_carte">
             <img src="../../assets/img/dos_carte.png" class="dos_carte">
@@ -105,7 +93,6 @@ echo $_SESSION['currentPage'];
             <img src="../../assets/img/dos_carte.png" class="dos_carte">
             <img src="../../assets/img/dos_carte.png" class="dos_carte">
           </div>
-        </div>
         </div>
       
         <div class="chat-popup" id="chat-popup" style="margin-top: -122px;">
@@ -126,32 +113,32 @@ echo $_SESSION['currentPage'];
 
       <footer style="background-color: #0c0b26;">
         <div class="footer-content">
-            <div class="info">
-                <div class="miniinfo">
-                    <h4 style="font-size: 1.4vw; color: white">Informations</h4>
-                    <p class="mot_gris">Quisque commodo facilisis purus,</p>
-                    <p class="mot_gris"><span class="mot_orange">Tel :</span> 06 66 66 66 66</p>
-                    <p class="mot_gris"><span class="mot_orange">Email :</span> support@powerofmemory.com</p>
-                    <p class="mot_gris"><span class="mot_orange">Location :</span> Paris</p>
-                    <div class="social-media">
-                        <button class="logo_marque"><i class="fa-brands fa-facebook"></i></button>
-                        <button class="logo_marque"><i class="fa-brands fa-twitter"></i></button>
-                        <button class="logo_marque"><i class="fa-brands fa-google"></i></button>
-                        <button class="logo_marque"><i class="fa-brands fa-pinterest"></i></button>
-                        <button class="logo_marque"><i class="fa-brands fa-instagram"></i></button>
-                    </div>
-                </div>
+          <div class="info">
+            <div class="miniinfo">
+              <h4 style="font-size: 1.4vw; color: white">Informations</h4>
+              <p class="mot_gris">Quisque commodo facilisis purus,</p>
+              <p class="mot_gris"><span class="mot_orange">Tel :</span> 06 66 66 66 66</p>
+              <p class="mot_gris"><span class="mot_orange">Email :</span> support@powerofmemory.com</p>
+              <p class="mot_gris"><span class="mot_orange">Location :</span> Paris</p>
+              <div class="social-media">
+                <button class="logo_marque"><i class="fa-brands fa-facebook"></i></button>
+                <button class="logo_marque"><i class="fa-brands fa-twitter"></i></button>
+                <button class="logo_marque"><i class="fa-brands fa-google"></i></button>
+                <button class="logo_marque"><i class="fa-brands fa-pinterest"></i></button>
+                <button class="logo_marque"><i class="fa-brands fa-instagram"></i></button>
+              </div>
             </div>
-            <div class="pom">
-                <div class="pomtitre"> <h4 style="font-size: 1.4vw; color: white">Power of Memory</h4></div>
-                <div class="listpom">
-                    <ul>
-                        <li style="color: #ec9123; list-style-type: square;"><a href="jeu.html" class="list">Jouer !</a></li>
-                        <li style="color: #ec9123; list-style-type: square;"><a href="score.html" class="list">Les scores</a></li>
-                        <li style="color: #ec9123; list-style-type: square;"><a href="contact.html" class="list">Nous contacter</a></li>
-                    </ul>
-                </div>
-            </div>
+          </div>
+          <div class="pom">
+            <div class="pomtitre"> <h4 style="font-size: 1.4vw; color: white">Power of Memory</h4></div>
+              <div class="listpom">
+                <ul>
+                  <li style="color: #ec9123; list-style-type: square;"><a href="jeu.html" class="list">Jouer !</a></li>
+                  <li style="color: #ec9123; list-style-type: square;"><a href="score.html" class="list">Les scores</a></li>
+                  <li style="color: #ec9123; list-style-type: square;"><a href="contact.html" class="list">Nous contacter</a></li>
+                </ul>
+              </div>
+          </div>
         </div>
         <br>
         <br>
@@ -180,4 +167,4 @@ echo $_SESSION['currentPage'];
 
        });
   </script>
-    </html>
+</html>

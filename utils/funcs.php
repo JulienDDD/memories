@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../assets/css/main.css">
 <?php 
 /* 
 Fichier comportant des fonctions utiles pour un code + opti

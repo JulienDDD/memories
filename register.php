@@ -30,7 +30,7 @@
           </br>
 
           <center>
-          <button type="submit" name="registerme" class="button_validation_inscription">Inscription</button>
+          <button type="submit" name="registerme" class="button_validation_inscription" style='height:3em;'>Inscription</button>
           <br><br>
         </center>
 </center>

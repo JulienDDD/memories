@@ -101,25 +101,6 @@ font-size: 30px;
     
 }
 
-.espace-button{
-    font-size:15px;
-    font-family:Arial;
-    width:30%;
-    height:50px;
-    color:#ffffff;
-    font-weight:bold;
-    border-top-left-radius:6px;
-    border-top-right-radius:6px;
-    border-bottom-left-radius:6px;
-    border-bottom-right-radius:6px;
-    cursor: pointer;
-    background-color: #EC9224;
-    
-}
-
-.espace-button:hover {
-    background-color: #ec9224c5;
-  }
 
 textarea{
     width: 30%;height: 180px;background-color: #272645;
@@ -143,9 +124,6 @@ border-style: none;
 }
 
 
-input:hover {
-    border: 2px solid #ff5733;
-}
 h1 {
     color: aliceblue;
     font-size: 50px;
@@ -277,7 +255,7 @@ font-size: 30px;
 }
 
 .button_validation_inscription:hover {
-background-color: rgb(18, 149, 25);
+background-color: #ec92249e;
 }
 
 
@@ -288,6 +266,7 @@ background-color: rgb(18, 149, 25);
     color: #fff;
     text-decoration: none;
     border-radius: 2px;
+    height: 3em;
 }
 .email {
     width: 100px; 
@@ -296,27 +275,21 @@ background-color: rgb(18, 149, 25);
 }
 
 .espace-button{
-    font-size:15px;
-    font-family:Arial;
-    width:30%;
-    height:50px;
-    border-width:1px;
-    color:#333333;
+    font-size: 1.005em;
+    width:20vw;
+    height:3vw;
+    background-color: #ec9123;
+    color:#ffffff;
     border-color:#EC9224;
     font-weight:bold;
-    border-top-left-radius:6px;
-    border-top-right-radius:6px;
-    border-bottom-left-radius:6px;
-    border-bottom-right-radius:6px;
-    box-shadow: 0px 1px 0px 0px #fff6af;
-    text-shadow: 0px 1px 0px #ffee66;
-    background:linear-gradient(#EC9224, #EC9224);
+    border-radius: 2px;
     cursor: pointer;
+    transition: 0.3s;
     
 }
 
 .espace-button:hover {
-    background: linear-gradient(#fb900e, #fb900e);
+    background-color: #ec9123b1;
   }
 
 textarea{
@@ -356,7 +329,7 @@ h1 {
     margin-right: 350px; /* Décalage de 20 pixels vers la gauche */
     padding: 10px;
     width: 100px;
-    height: 30px;
+    height: 50px;
 }
 
 
@@ -680,3 +653,47 @@ left: 0;
 .all_container{
     right: 0
 }
+
+/* Styles de base pour .file-upload */
+.file-upload {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    background-color: #ec9123;
+    color: #fff;
+    border-radius: 2px;
+    padding: 0px 10px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    height: 2vw;
+    width: 15vw;
+    transition: background-color 0.3s; /* Animation de transition pour le fond */
+    cursor:pointer;
+}
+
+/* Styles au survol de .file-upload */
+.file-upload:hover {
+    background-color: #ec9123b9; /* Couleur de fond différente au survol */
+}
+
+.file-upload input[type="file"] {
+    position: absolute;
+    font-size: 100px;
+    right: 0;
+    top: 0;
+    opacity: 0;
+}
+
+
+.message-error{
+    color: rgb(255, 0, 0);
+    text-align: center;
+}
+
+
+.message-success{
+    color: green;
+    text-align: center;
+}
+
+
