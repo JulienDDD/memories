@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <?php require_once("utils/common.php") ?>
 <?php require_once(SITE_ROOT."utils/database.php") ?>
 <?php
@@ -20,83 +20,69 @@ $stmt = $pdo->prepare("SELECT MAX(game_score) AS maxscore FROM scores ");
 $stmt->execute();
 $result = $stmt->fetch();
 $maxscore = $result->maxscore;
-
-
-    
-      
-
-
-
-
 ?>
-    <html lang="fr">
-        <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Accueil</title>
-            <link rel="stylesheet" href="assets/css/headerindex.css">
-            <link rel="stylesheet" href="assets/css/mainindex.css">
-            <link rel="stylesheet" href="assets/css/footerindex.css">
-            <script src="https://kit.fontawesome.com/fd7b39a087.js" crossorigin="anonymous"></script>
-        </head>
-        <body class="index" style="background-color: #151231;">
-            <header>
-                <div class="under-header" >
-                    <div class="header">
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Accueil</title>
+        <link rel="stylesheet" href="assets/css/headerindex.css">
+        <link rel="stylesheet" href="assets/css/mainindex.css">
+        <link rel="stylesheet" href="assets/css/footerindex.css">
+        <script src="https://kit.fontawesome.com/fd7b39a087.js" crossorigin="anonymous"></script>
+    </head>
+    <body class="index" style="background-color: #151231;">
+        <header>
+            <div class="under-header" >
+                <div class="header">
                     <a href="index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
                     <div class="header-right">
-                    <a href="index.php" class="lien" style="color:#ec9123">Accueil</a>
-                    <a href="games/memory/index.php" class="lien">Jeu</a>
-                    <a href="games/memory/scores.php" class="lien">Scores</a>
-                    <a href="login.php" class="lien">Connexion</a>
-                    <a href="register.php" class="lien">Inscription</a>
-                    <a href="myAccount.php" class="lien">Mon espace</a>
-                    <a href="contact.php" class="lien">Nous contacter</a>
-                    <?php 
-                    if (isset($_SESSION['user'])) {
-                        echo '<a href="disconnect.php" class="lien">'.$_SESSION['user']["pseudo"].'</a>';
-                    }
-                    ?>
-                        </div>
-                    </div>
-    <br>
-
-                    <div class="titreprinc">
-                        <center><h1 style="color: rgb(255, 255, 255); font-size: 5vw;">BIENVENUE DANS <br> NOTRE STUDIO !</h1></center>
-                        <center><h3 style="color: #cab8c1; font-size: 1vw;">Venez challenger les cerveaux les plus agiles!</h3></center>
-                        <center><a href="games/memory/index.php"><button onclick="window.location.href = '';" class="bouton_jouer" type="button">JOUER !</button></a></center>
+                        <a href="index.php" class="lien" style="color:#ec9123">Accueil</a>
+                        <a href="games/memory/index.php" class="lien">Jeu</a>
+                        <a href="games/memory/scores.php" class="lien">Scores</a>
+                        <a href="login.php" class="lien">Connexion</a>
+                        <a href="register.php" class="lien">Inscription</a>
+                        <a href="myAccount.php" class="lien">Mon espace</a>
+                        <a href="contact.php" class="lien">Nous contacter</a>
+                        <?php if (isset($_SESSION['user'])) {
+                                echo '<a href="disconnect.php" class="lien">'.$_SESSION['user']["pseudo"].'</a>';
+                            }?>
                     </div>
                 </div>
-            </header>
-            <main>
-<br>
-<br>
-<br>
-<br>
-<br>
-                <div class="triplepaysages">
-                    <div class="paysage1"><img src="assets/img/zelda.jpeg" style="width: 37vw;"></div>
-                    <div class="paysage2et3">
-                        <div class="paysage2"><img src="assets/img/valorant.webp" style="height: 23vw;"></div>
-                        <div class="paysage3"><img src="assets/img/r6.png" style="height: 23vw;"></div>
+                <br>
+                <div class="titreprinc">
+                    <center><h1 style="color: rgb(255, 255, 255); font-size: 5vw;">BIENVENUE DANS <br> NOTRE STUDIO !</h1></center>
+                    <center><h3 style="color: #cab8c1; font-size: 1vw;">Venez challenger les cerveaux les plus agiles!</h3></center>
+                    <center><a href="games/memory/index.php"><button onclick="window.location.href = '';" class="bouton_jouer" type="button">JOUER !</button></a></center>
+                </div>
+            </div>
+        </header>
+        <main>
+            <br><br><br><br><br>
+            <div class="triplepaysages">
+                <div class="paysage1"><img src="assets/img/zelda.jpeg" style="width: 37vw;"></div>
+                <div class="paysage2et3">
+                    <div class="paysage2"><img src="assets/img/valorant.webp" style="height: 23vw;"></div>
+                    <div class="paysage3"><img src="assets/img/r6.png" style="height: 23vw;"></div>
+                </div>
+            </div>
+            <div class="text123">
+                <div class="text_number">
+                    <div class="number">
+                        <h2>01</h2>
+                    </div>
+                    <div class="text">
+                        <h3>Lorem psum</h3>
+                        <p style="color:#cab8c1; font-size: 1.1vw;" >Quisque commodo facilisis purus
+                            Interdum volutpat arc viverra sed
+                            ctlam sodales convallis pretium
+                            Aenean pharetra laoreet lorem. Nunc
+                            daplous tinciaunt sem a pharetra
+                            Duis vitae tristique</p>
                     </div>
                 </div>
-
-                <div class="text123">
-                    <div class="text_number">
-                        <div class="number">
-                            <h2>01</h2>
-                        </div>
-                        <div class="text">
-                            <h3>Lorem psum</h3>
-                            <p style="color:#cab8c1; font-size: 1.1vw;" >Quisque commodo facilisis purus
-                                Interdum volutpat arc viverra sed
-                                ctlam sodales convallis pretium
-                                Aenean pharetra laoreet lorem. Nunc
-                                daplous tinciaunt sem a pharetra
-                                Duis vitae tristique</p>
-                        </div>
-                    </div>
                     <div class="text_number">
                         <div class="number">
                             <h2>02</h2>
