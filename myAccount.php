@@ -1,7 +1,7 @@
 <?php 
 require_once('utils/common.php'); 
-require_once(SITE_ROOT.'utils/database.php'); 
-require_once(SITE_ROOT.'utils/funcs.php');
+require_once('utils/database.php'); 
+require_once('utils/funcs.php');
 
 if(!isset($_SESSION['user'])){
     sendMessage("error", "Veuillez vous connecter", "memories/login.php");
@@ -105,9 +105,9 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['editmail']) && !empty($
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-<?= require_once(SITE_ROOT."partials/head.php");?>
+<?= require_once("partials/head.php");?>
 <body style="background-color: #151231; background-size: 1520px 800px;">
-<?= require_once(SITE_ROOT.'partials/header.php')?>
+<?= require_once('partials/header.php')?>
 
 
     <main>

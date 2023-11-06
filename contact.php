@@ -15,9 +15,9 @@ mail($to, $subject, $message, $headers);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-<?= require_once(SITE_ROOT."partials/head.php");?>
+<?= require_once("partials/head.php");?>
         <body style="background-color: #151231; background-size: 1520px 800px;">
-        <?= require_once(SITE_ROOT.'partials/header.php')?>
+        <?= require_once('partials/header.php')?>
         <br>
                 
             </br>
