@@ -26,6 +26,18 @@ function sendMessage($messagetype, $message, $redirection)
     exit();
 }
 
+function sendChatMessage($message, $userId, $pdo)
+{
+    $stmt = $pdo->prepare('INSERT INTO messages(id_game,id_sender,comments,date_comment) VALUES(:idgame, :idsender, :comments, NOW())');
+    $stmt = $stmt->execute([
+        ':idgame' => "1",
+        ':idsender' => $userId,
+        ':comments' => $message
+    ]);
+    
+
+}
+
 
 
 ?>

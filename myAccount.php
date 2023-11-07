@@ -1,5 +1,118 @@
+<?php 
+require_once('utils/common.php'); 
+require_once(SITE_ROOT.'utils/database.php'); 
+require_once(SITE_ROOT.'utils/funcs.php');
 
-<?php require_once("utils/common.php") ?>
+if(!isset($_SESSION['user'])){
+    sendMessage("error", "Veuillez vous connecter", "memories/login.php");
+}
+
+
+$pdo = connectToDbAndGetPdo();
+
+if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['editpwd']))
+{
+    if(!empty($_POST['old_pass']) && !empty($_POST['newpassword']) && !empty($_POST['newpasswordconfirm']) && $_POST['newpassword'] == $_POST['newpasswordconfirm'] )
+    {
+    // requete pour acceder au mot de passe actuel
+     $stmt = $pdo->prepare('SELECT player_password FROM players WHERE id_player=:idp');
+     $stmt->execute(
+        [   
+            ':idp' => $_SESSION['user']['id']
+        ]);
+
+        $results = $stmt->fetch();
+
+        if(password_verify($_POST['old_pass'],$results->player_password))
+        {
+            // SI ANCIEN MDP VALIDE 
+            $newPassword = $_POST['newpassword'];
+            $hashedNewPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+
+            $stmt = $pdo->prepare('UPDATE players SET player_password = :newpassword WHERE id_player = :idp ');
+            $stmt = $stmt->execute(
+                [
+                    ":newpassword" => $hashedNewPassword,
+                    ":idp" => $_SESSION['user']['id']
+
+                ]
+                );
+
+            sendMessage('success', 'Un nouveau mot de passe vous a été défini', "myAccount.php");
+
+
+        }
+        else{
+            // ERREUR ANCIEN MDP INVALIDE
+
+
+        }
+
+
+
+
+    }
+    else{
+        // ERREUR
+    }
+
+}
+
+if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['editmail']) && !empty($_POST['old_email']) && !empty($_POST['new_email']) )
+{
+
+    // requete pour acceder au mot de passe et mail actuel
+     $stmt = $pdo->prepare('SELECT player_password, email FROM players WHERE id_player=:idp');
+     $stmt->execute(
+        [   
+            ':idp' => $_SESSION['user']['id']
+        ]);
+     $results = $stmt->fetch();
+
+        if(password_verify($_POST['passwordconfirmation'],$results->player_password) && $_POST['old_email'] == $results->email)
+        {
+            // SI MDP VALIDE & ancien mail valide
+
+            $stmt = $pdo->prepare('UPDATE players SET email=:newemail WHERE id_player=:idp');
+            $stmt = $stmt->execute(
+                 [
+                    ":newemail" => $_POST['new_email'],
+                    "idp" => $_SESSION['user']['id']
+
+                ]
+                );
+
+                sendMessage('success', 'Nouvelle adresse e-mail definie', "myAccount.php");
+
+
+        }
+        else{
+            // ERREUR ANCIEN MDP INVALIDE
+
+
+        }
+
+
+
+
+
+}
+
+
+
+
+
+?>
+ <?php require_once("utils/common.php");
+require_once("utils/funcs.php");
+if(isset($_SESSION['user']))
+{
+
+}
+else{
+    sendMessage('error', 'Merci de vous connecter.', 'login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

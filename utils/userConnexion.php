@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../assets/css/main.css">
+
 <?php
 require_once("common.php");
 require_once(SITE_ROOT . "utils/funcs.php");
@@ -71,8 +71,8 @@ if (
             "id" => $userId,
             "pseudo" => $userPseudo
         ];
-
-        sendMessage('success', 'Vous êtes connecté', 'myAccount.php');
+        
+        sendMessage('success', 'Vous êtes connecté', '../myAccount.php');
     }
     else{
 
