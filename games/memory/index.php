@@ -1,10 +1,136 @@
+<?php 
+require_once('../../utils/common.php');
+require_once(SITE_ROOT.'utils/database.php');
+require_once(SITE_ROOT.'utils/funcs.php'); ?>
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jeu</title>
+    <link rel="stylesheet" href="../../assets/css/main.css">
+    <link rel="stylesheet" href="../../assets/css/header.css">
+    <link rel="stylesheet" href="../../assets/css/footerindex.css">
+    <script src="https://kit.fontawesome.com/fd7b39a087.js" crossorigin="anonymous"></script>
+  </head>
+  <body style="background-color: #151231; background-size: 1520px 800px;">
+    <div class="under-header" id="top">
+      <div class="header">
+        <a href="../../index.php" class="lien" style="font-size: 1.5em;">The Power of Memory</a>
+        <div class="header-right">
+          <a href="../../index.php" class="lien">Accueil</a>
+          <a href="index.php" class="lien">Jeu</a>
+          <a href="scores.php" class="lien">Scores</a>
+          <a href="../../login.php" class="lien">Connexion</a>
+          <a href="../../register.php" class="lien">Inscription</a>
+          <a href="../../myAccount.php" class="lien">Mon espace</a>
+          <a href="../../contact.php" class "lien">Nous contacter</a>
+        </div>
+      </div>
+      <br/><br/><br>
+      <center><br><h1 style="margin-top: 0px; display: block;">The Power Of Memory</h1></center>
+    </div>
+    <br/>
+    <div class="choix">
+      <div class="choix1et2">
+        <select id="theme" onchange="getTheme(this)" style="width: 17vw; margin: 1vw 10vw; background-color: #ec9123; padding: 1vw; color: cornsilk; font-size: 1em; text-align: center; border-radius: 2px;">
+          <option value="">Choisissez un thème</option>
+          <option value="1">Thème 1</option>
+          <option value="2">Thème 2</option>
+          <option value="3">Thème 3</option>
+        </select>
+      </div>
+      <div class="choix1et2">
+        <select id="difficulty" onchange="getDifficulty(this)" style="width: 17vw; margin: 1vw 10vw; background-color: #ec9123; padding: 1vw; color: cornsilk; font-size: 1em; text-align: center; border-radius: 2px;">
+          <option value="">Choisissez une difficulté</option>
+          <option value="4">Difficulté 1</option>
+          <option value="6">Difficulté 2</option>
+          <option value="8">Difficulté 3</option>
+        </select>
+      </div>
+    </div>
+    <div class="global_theme">
+      <div class="txt_imgtheme">
+        <h4 class="txt_theme">Exemple du thème 1 :</h4>
+        <img src="../../assets/img/ex_theme1.png" class="img_theme">
+      </div>
+      <div class="txt_imgtheme">
+        <h4 class="txt_theme">Exemple du thème 2 :</h4>
+        <img src="../../assets/img/ex_theme2.png" class="img_theme">
+      </div>
+      <div class="txt_imgtheme">
+        <h4 class="txt_theme">Exemple du thème 3 :</h4>
+        <img src="../../assets/img/ex_theme3.png" class="img_theme">
+      </div>
+    </div>
+    <center>
+      <button id="startGame" onclick="tableCreate()" style="background-color: #ec9123; text-decoration: none; color: cornsilk; padding: 1.5vw; border-radius: 3px; border: none">LANCER LA PARTIE</button>
+    </center>
+    <br>
+    <center><div class="border_jeu"></div></center>
+    <br><br>
+    <div id="timer" style="color: cornsilk; font-size: 1.5em; margin-top: 1.5vw; margin-left: 5vw; margin-bottom: 2vw"></div>
+    <center><div id="tableauCartes" class="cartes"></div></center>
+    <br><br>
+    <!-- Commenté car je n'ai pas vu où cela était utilisé
+    <div class="chat-popup" id="chat-popup" style="margin-top: -122px;">
+      <div class="chat-title">
+        <div style="display: flex; font-size: 15; width: 200%;">
+          <span style="margin-left: 10px; color: white; margin-top: 2vh;">Username<br>
+            <span style="color: green; font-size: 9px; top: 50px;"><i class="fa-regular fa-circle-dot"></i> EN LIGNE</span>
+          </span>
+        </div>
+        <div style="width: 53%; display: flex;">
+          <a id="closebtn" style="margin-top: 2vh; float: right; color: white; font-size: 19px;"><i class="fa-solid fa-circle-xmark"></i></a>
+        </div>
+      </div>
+      <input type="text" style="width: 94.5%; border-radius: 0px; position: fixed; bottom: 0;" placeholder="Saisissez votre message...">
+    </div>
+    -->
+    <footer style="background-color: #0c0b26;">
+      <div class="footer-content">
+        <div class="info">
+          <div class="miniinfo">
+            <h4 style="font-size: 1.4vw; color: white">Informations</h4>
+            <p class="mot_gris">Quisque commodo facilisis purus,</p>
+            <p class="mot_gris"><span class="mot_orange">Tel :</span> 06 66 66 66 66</p>
+            <p class="mot_gris"><span class="mot_orange">Email :</span> support@powerofmemory.com</p>
+            <p class="mot_gris"><span class="mot_orange">Location :</span> Paris</p>
+            <div class="social-media">
+              <button class="logo_marque"><i class="fa-brands fa-facebook"></i></button>
+              <button class="logo_marque"><i class="fa-brands fa-twitter"></i></button>
+              <button class="logo_marque"><i class="fa-brands fa-google"></i></button>
+              <button class="logo_marque"><i class="fa-brands fa-pinterest"></i></button>
+              <button class="logo_marque"><i class="fa-brands fa-instagram"></i></button>
+            </div>
+          </div>
+        </div>
+        <div class="pom">
+          <div class="pomtitre"> <h4 style="font-size: 1.4vw; color: white">Power of Memory</h4></div>
+          <div class="listpom">
+            <ul>
+              <li style="color: #ec9123; list-style-type: square;"><a href="jeu.html" class="list">Jouer !</a></li>
+              <li style="color: #ec9123; list-style-type: square;"><a href="score.html" class="list">Les scores</a></li>
+              <li style="color: #ec9123; list-style-type: square;"><a href="contact.html" class="list">Nous contacter</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <br><br><br>
+      <p class="mot_gris" style="margin-left: 13.5vw;">Copyright © 2022 Tous droits réservés</p>
+      <br>
+    </footer>
+  </body>
+</html>
 <script>
+var difficulty
 function getDifficulty(selectElement) {
   var selectedValue = selectElement.value;
   if (selectedValue === "") {
       alert("Veuillez sélectionner une option !");
   } else {
-      console.log("La difficulté sélectionnée est : " + selectedValue);
+      difficulty = selectedValue;
+      console.log("La difficulté sélectionnée est : " + difficulty);
   }
 }
 
@@ -13,277 +139,185 @@ function getTheme(selectElement) {
   if (selectedValue === "") {
       alert("Veuillez sélectionner une option !");
   } else {
-      console.log("Le thème sélectionnée est : " + selectedValue);
+      console.log("Le thème sélectionné est : " + selectedValue);
   }
 }
-
-
-
-</script>
-<?php 
-require_once('../../utils/common.php');
-require_once(SITE_ROOT.'utils/database.php');
-require_once(SITE_ROOT.'utils/funcs.php'); ?>
-<!DOCTYPE html>
-  <html lang="fr">
-    <head>
-      <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>Jeu</title>
-      <link rel="stylesheet" href ="../../assets/css/main.css">
-      <link rel="stylesheet" href ="../../assets/css/header.css">
-      <link rel="stylesheet" href="../../assets/css/footerindex.css">
-      <script src="https://kit.fontawesome.com/fd7b39a087.js" crossorigin="anonymous"></script>
-    </head>
-    <body style="background-color: #151231; background-size: 1520px 800px;">
-    <div class="under-header" id="top">        
-    
-        <div class="header">
-            
-        <a href="../../index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
-        <div class="header-right">
-        <a href="../../index.php" class="lien">Accueil</a>
-        <a href="index.php" class="lien">Jeu</a>
-        <a href="scores.php" class="lien">Scores</a>
-        <a href="../../login.php" class="lien">Connexion</a>
-        <a href="../../register.php" class="lien">Inscription</a>
-        <a href="../../myAccount.php" class="lien">Mon espace</a>
-        <a href="../../contact.php" class="lien">Nous contacter</a>
-            </div>
-            
-          </div>
-        </br></br></br>
-          <center><br><h1 style="margin-top: 0px; display: block;">The Power Of Memory</h1></center>
-        </div>
-
-    
-      <br/>
-      <div class="choix">
-        <div class="choix1et2">
-          <select id="theme" onchange="getTheme(this)" style="width: 17vw ;margin: 1vw 10vw; background-color:#ec9123; padding:1vw; color:cornsilk; font-size:1em; text-align:center; border-radius:2px;">
-            <option value="">Choisissez un thème</option>
-            <option value="1">Thème 1</option>
-            <option value="2">Thème 2</option>
-            <option value="3">Thème 3</option>
-          </select>
-        </div>
-        <div class="choix1et2">
-        <select id="difficulty" onchange="getDifficulty(this)" style="width: 17vw ;margin: 1vw 10vw; background-color:#ec9123; padding:1vw; color:cornsilk; font-size:1em; text-align:center; border-radius:2px;">
-            <option value="">Choisissez une difficulté</option>
-            <option value="4">Difficulté 1</option>
-            <option value="6">Difficulté 2</option>
-            <option value="8">Difficulté 3</option>
-          </select>
-        </div>
-      </div>
-      <div class="global_theme">
-        <div class="txt_imgtheme">
-          <h4 class="txt_theme">Exemple du thème 1 :</h4>
-          <img src="../../assets/img/ex_theme1.png" class="img_theme">
-        </div>
-        <div class="txt_imgtheme">
-          <h4 class="txt_theme">Exemple du thème 2 : </h4>
-          <img src="../../assets/img/ex_theme2.png" class="img_theme">
-        </div>
-        <div class="txt_imgtheme">
-          <h4 class="txt_theme">Exemple du thème 3 : </h4>
-          <img src="../../assets/img/ex_theme3.png" class="img_theme">
-        </div>
-      </div>
-      <center><button id="startGame"  onclick="startGame()" style="background-color: #ec9123; text-decoration:none; color:cornsilk; padding:1.5vw; border-radius: 3px; border : none">LANCER LA PARTIE</button></center>
-      <br>
-      
-      <center><div class="border_jeu"></div></center>
-      <br><br>
-
-      <div id="timer" style="color: cornsilk; font-size: 1.5em; margin-top: 1.5vw; margin-left:5vw; margin-bottom:2vw"></div>
-
-    <center>
-      <div id="tableauCartes"></div>
-    </center>
-      <br><br>
-        <div class="chat-popup" id="chat-popup" style="margin-top: -122px;">
-          
-          <div class="chat-title"><div style="display: flex;  font-size: 15; width: 200%;"><span style="margin-left: 10px; color: white;margin-top: 2vh;"> Username  <br><span style="color: green; font-size: 9px; top: 50px;"><i class="fa-regular fa-circle-dot"></i> EN LIGNE</span></span> </div>
-            <div style="width: 53%;display: flex;"><a id="closebtn" style="margin-top: 2vh;float:right; color: white; font-size: 19px;"><i class="fa-solid fa-circle-xmark"></i></a></div>
-          </div>
-         
-          
-
-
-
-
-      <input type="text" style="width: 94.5%;border-radius: 0px;  position: fixed; bottom: 0;" placeholder="Saisissez votre message...">
-        </div>
-
-      
-
-      <footer style="background-color: #0c0b26;">
-        <div class="footer-content">
-          <div class="info">
-            <div class="miniinfo">
-              <h4 style="font-size: 1.4vw; color: white">Informations</h4>
-              <p class="mot_gris">Quisque commodo facilisis purus,</p>
-              <p class="mot_gris"><span class="mot_orange">Tel :</span> 06 66 66 66 66</p>
-              <p class="mot_gris"><span class="mot_orange">Email :</span> support@powerofmemory.com</p>
-              <p class="mot_gris"><span class="mot_orange">Location :</span> Paris</p>
-              <div class="social-media">
-                <button class="logo_marque"><i class="fa-brands fa-facebook"></i></button>
-                <button class="logo_marque"><i class="fa-brands fa-twitter"></i></button>
-                <button class="logo_marque"><i class="fa-brands fa-google"></i></button>
-                <button class="logo_marque"><i class="fa-brands fa-pinterest"></i></button>
-                <button class="logo_marque"><i class="fa-brands fa-instagram"></i></button>
-              </div>
-            </div>
-          </div>
-          <div class="pom">
-            <div class="pomtitre"> <h4 style="font-size: 1.4vw; color: white">Power of Memory</h4></div>
-              <div class="listpom">
-                <ul>
-                  <li style="color: #ec9123; list-style-type: square;"><a href="jeu.html" class="list">Jouer !</a></li>
-                  <li style="color: #ec9123; list-style-type: square;"><a href="score.html" class="list">Les scores</a></li>
-                  <li style="color: #ec9123; list-style-type: square;"><a href="contact.html" class="list">Nous contacter</a></li>
-                </ul>
-              </div>
-          </div>
-        </div>
-        <br>
-        <br>
-        <br>
-        <p class="mot_gris" style="margin-left: 13.5vw;">Copyright © 2022 Tous droits réservés</p>
-        <br>
-    </footer>
-    </body>
-
-    <script>
-     
-
-    
-       let [milliseconds,seconds,minutes,hours] = [0,0,0,0];
-       let timerRef = document.getElementById('chronotime');
-       let int = null;
-
-       document.getElementById('startgame').addEventListener('click',  ()=>{
-           if(int!==null){
-              clearInterval(int);
-            }
-         int = setInterval(displayTimer,10);
-        });
-
-
-       function displayTimer(){
-    milliseconds+=10;
-    if(milliseconds == 1000){
-        milliseconds = 0;
-        seconds++;
-        if(seconds == 60){
-            seconds = 0;
-            minutes++;
-            if(minutes == 60){
-                minutes = 0;
-                hours++;
-            }
-        }
-    }
- let h = hours < 10 ? 0 + hours : hours;
- let m = minutes < 10 ? 0 + minutes : minutes;
- let s = seconds < 10 ? 0 + seconds : seconds;
- let ms = milliseconds < 10 ? 0 + milliseconds : milliseconds < 100 ? 0 + milliseconds : milliseconds;
- timerRef.innerHTML = ` ${m}:${s}:${ms}`;
+if(difficulty=="4"){
+  var tab = [];
+  // Génération des valeurs de 1 à 16 (pour 16 paires)
+  for (let i = 1; i <= 8; i++) {
+    tab.push(i);
 }
 
+// Dupliquer le tableau pour avoir 32 images
+tab = tab.concat(tab);
 
-  </script>
-</html>
+shuffle(tab); // Mélanger les valeurs
+}
+else if (difficulty=="6"){
+  var tab = [];
+  // Génération des valeurs de 1 à 16 (pour 16 paires)
+  for (let i = 1; i <= 18; i++) {
+    tab.push(i);
+  }
+  // Dupliquer le tableau pour avoir 32 images
+  tab = tab.concat(tab);
+  shuffle(tab); // Mélanger les valeurs
+}
+else{
+  var tab = [];
+  for (let i = 1; i <= 32; i++) {
+    tab.push(i);
+}
+// Dupliquer le tableau pour avoir 32 images
+tab = tab.concat(tab);
 
-<script>
-var bouton = document.getElementById("startGame");
-bouton.addEventListener("click", function() {
-    console.log("Le bouton a été cliqué !");
-});
-
-
-function startGame() {
-    var selectDifficulte = document.getElementById("difficulty");
-    var difficulte = selectDifficulte.value;
-
-    if (difficulte == '4'){
-      var taille = 8
-      var espace = 0.6
-    }
-    else if (difficulte == '6'){
-      var taille = 6
-      var espace = 0.5
-    }
-    else{
-      var taille = 4
-      var espace = 0.4
-    }
-
-    if (difficulte !== "") {
-        var tableauCartes = document.getElementById("tableauCartes");
-        tableauCartes.innerHTML = ""; 
-
-        var colonnes = difficulte;
-        var lignes = difficulte;  
-
-        var tableauHTML = "<table>";
-
-        for (var i = 0; i < lignes; i++) {
-            tableauHTML += "<tr>";
-            for (var j = 0; j < colonnes; j++) {
-                tableauHTML += '<td><img src="../../assets/img/dos_carte.png" alt="" style="width:'+taille+'vw;margin:'+espace+'vw" onclick:"retournerCarte()"></td>';
-            }
-            tableauHTML += "</tr>";
-        }
-
-        tableauHTML += "</table>";
-
-        tableauCartes.innerHTML = tableauHTML;
-    }
+shuffle(tab); // Mélanger les valeurs
 }
 
 
 
-var bouton = document.getElementById("startGame");
-bouton.addEventListener("click", function() {
-    console.log("Le bouton a été cliqué !");
-    startGame(); 
-    startTimer(); 
-});
 
-var timerInterval; 
-var timerMinutes = 0;
-var timerSeconds = 0; 
-var timerMilliseconds = 0; 
 
-function startTimer() {
-    timerMinutes = 0; 
-    timerSeconds = 0; 
-    timerMilliseconds = 0; 
-    updateTimer(); 
+function shuffle(array) {
+let currentIndex = array.length,randomIndex;
 
-    timerInterval = setInterval(function() {
-        timerMilliseconds++; 
-        if (timerMilliseconds === 10) {
-            timerMilliseconds = 0;
-            timerSeconds++; 
-        }
-        if (timerSeconds === 60) {
-            timerSeconds = 0;
-            timerMinutes++; 
-        }
-        updateTimer(); 
-    }, 100); 
+// While there remain elements to shuffle.
+while (currentIndex > 0) {
+
+// Pick a remaining element.
+randomIndex = Math.floor(Math.random() * currentIndex);
+currentIndex--;
+
+// And swap it with the current element.
+[array[currentIndex], array[randomIndex]] = [
+  array[randomIndex], array[currentIndex]];
 }
 
-function updateTimer() {
-    var timerElement = document.getElementById("timer");
-    timerElement.innerHTML = "Temps écoulé : " + timerMinutes + " min " + timerSeconds + " sec " + timerMilliseconds + "00 ms";
+return array;
 }
 
-function retournerCarte(){
-  
+
+var cardsFlipped = []; // Tableau pour stocker les cartes retournées
+
+var isLocked = false; // Variable de verrouillage
+
+function tourne_image(index) {
+if (isLocked) {
+return; // Si le jeu est verrouillé, ne rien faire
 }
+
+var carte = event.target; // Capture l'élément sur lequel vous avez cliqué
+
+if (carte.classList.contains('flipped')) {
+return; // Si la carte est déjà retournée, ne rien faire
+}
+
+carte.style.transform = 'rotateY(180deg)'; // Effectue la rotation de la carte
+
+// Attendez un court instant pour changer l'image
+setTimeout(function() {
+carte.src = '<?= PROJECT_FOLDER ?>assets/img/icon_vg/image' + index + '.png';
+carte.classList.add('flipped'); // Ajoute une classe "flipped" pour indiquer que la carte est retournée
+cardsFlipped.push(carte);
+
+if (cardsFlipped.length === 2) {
+  isLocked = true; // Verrouiller le jeu pendant la comparaison
+  if (cardsFlipped[0].src !== cardsFlipped[1].src) {
+    // Si les cartes sont différentes, attendez un court instant, puis retournez-les
+    setTimeout(function() {
+      cardsFlipped[0].style.transform = 'rotateY(0deg)'; // Retournez la première carte
+      cardsFlipped[1].style.transform = 'rotateY(0deg)'; // Retournez la deuxième carte
+      cardsFlipped[0].classList.remove('flipped'); // Retire la classe "flipped"
+      cardsFlipped[1].classList.remove('flipped');
+      cardsFlipped[0].src = '<?= PROJECT_FOLDER ?>assets/img/dos_carte.png';
+      cardsFlipped[1].src = '<?= PROJECT_FOLDER ?>assets/img/dos_carte.png';
+      cardsFlipped = [];
+      isLocked = false; // Déverrouiller le jeu
+    }, 1000); // Attendre 0.5 seconde (500 millisecondes) pour l'animation
+  } else {
+    // Si les cartes sont identiques, laissez-les affichées
+    cardsFlipped = [];
+    isLocked = false; // Déverrouiller le jeu
+  }
+}
+}, 100); // Attendre 0.1 seconde (100 millisecondes) avant la rotation
+}
+
+
+
+
+
+// Used like so
+shuffle(tab);
+
+function tableCreate() {
+const tableau = document.getElementById('tableauCartes');
+const tbl = document.createElement('table');
+tbl.style.width = '100px';
+
+for (let i = 0; i < difficulty; i++) {
+const tr = tbl.insertRow();
+for (let j = 0; j < difficulty; j++) {
+let index = i * difficulty + j; // Calcule l'index de la carte dans le tableau
+let value = tab[index];  
+const td = tr.insertCell();
+let img = document.createElement('img');
+img.src = '<?= PROJECT_FOLDER ?>assets/img/dos_carte.png';
+img.className = 'carte ' + index.toString;
+
+img.style.width = '5vw'; // Définissez la largeur souhaitée
+img.style.height = '5vw'; // Définissez la hauteur souhaitée
+img.style.margin = '0.4vw';
+img.onclick = function() {
+  tourne_image(value);
+};
+
+td.appendChild(img);
+}
+}
+
+tableau.appendChild(tbl);
+}
+
+
+
+// var bouton = document.getElementById("startGame");
+// bouton.addEventListener("click", function() {
+//     console.log("Le bouton a été cliqué !");
+//     tableCreate();
+//     startTimer();
+// });
+
+// var timerInterval;
+// var timerMinutes = 0;
+// var timerSeconds = 0;
+// var timerMilliseconds = 0;
+
+// function startTimer() {
+//     timerMinutes = 0;
+//     timerSeconds = 0;
+//     timerMilliseconds = 0;
+//     updateTimer();
+
+//     timerInterval = setInterval(function() {
+//         timerMilliseconds++;
+//         if (timerMilliseconds === 10) {
+//             timerMilliseconds = 0;
+//             timerSeconds++;
+//         }
+//         if (timerSeconds === 60) {
+//             timerSeconds = 0;
+//             timerMinutes++;
+//         }
+//         updateTimer();
+//     }, 100);
+// }
+
+// function updateTimer() {
+//     var timerElement = document.getElementById("timer");
+//     timerElement.innerHTML = "Temps écoulé : " + timerMinutes + " min " + timerSeconds + " sec " + timerMilliseconds + "00 ms";
+// }
+
 
 </script>
