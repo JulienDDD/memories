@@ -92,6 +92,7 @@ require_once(SITE_ROOT.'utils/funcs.php'); ?>
       </div>
       <center><button id="startGame"  onclick="startGame()" style="background-color: #ec9123; text-decoration:none; color:cornsilk; padding:1.5vw; border-radius: 3px; border : none">LANCER LA PARTIE</button></center>
       <br>
+      
       <center><div class="border_jeu"></div></center>
       <br><br>
 
@@ -155,23 +156,43 @@ require_once(SITE_ROOT.'utils/funcs.php'); ?>
     </body>
 
     <script>
-      let closebtn = document.getElementById("closebtn");
-      let popup = document.getElementById("chat-popup");
-  
-      closebtn.addEventListener("click", () => {
+     
 
-        if(popup.style.display != "none")
-        {
-       
-        popup.style.display = 'none'; 
+    
+       let [milliseconds,seconds,minutes,hours] = [0,0,0,0];
+       let timerRef = document.getElementById('chronotime');
+       let int = null;
+
+       document.getElementById('startgame').addEventListener('click',  ()=>{
+           if(int!==null){
+              clearInterval(int);
+            }
+         int = setInterval(displayTimer,10);
+        });
+
+
+       function displayTimer(){
+    milliseconds+=10;
+    if(milliseconds == 1000){
+        milliseconds = 0;
+        seconds++;
+        if(seconds == 60){
+            seconds = 0;
+            minutes++;
+            if(minutes == 60){
+                minutes = 0;
+                hours++;
+            }
         }
+    }
+ let h = hours < 10 ? 0 + hours : hours;
+ let m = minutes < 10 ? 0 + minutes : minutes;
+ let s = seconds < 10 ? 0 + seconds : seconds;
+ let ms = milliseconds < 10 ? 0 + milliseconds : milliseconds < 100 ? 0 + milliseconds : milliseconds;
+ timerRef.innerHTML = ` ${m}:${s}:${ms}`;
+}
 
-        else{
-          popup.style.display = 'grid'; 
-        }
 
-
-       });
   </script>
 </html>
 
