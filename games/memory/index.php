@@ -64,10 +64,16 @@
           <img src="../../assets/img/ex_theme3.png" class="img_theme">
         </div>
       </div>
-      <center><button style="background-color: #ec9123; text-decoration:none; color:cornsilk; padding:1.5vw; border-radius: 3px; border : none">LANCER LA PARTIE</button></center>
+      <center><button id="startgame" style="background-color: #ec9123; text-decoration:none; color:cornsilk; padding:1.5vw; border-radius: 3px; border : none">LANCER LA PARTIE</button></center>
       <br>
+      
       <center><div class="border_jeu"></div></center>
-      <br><br>
+      
+      <br>
+      <center><span style="color: white; font-size: 53px;" id="chronotime">0:0:000</span></center>
+
+  
+      <br>
       <div class="jeu_carte">
         <div class="ligne_jeu">
           <img src="../../assets/img/dos_carte.png" class="dos_carte">
@@ -166,5 +172,41 @@
 
 
        });
+
+    
+       let [milliseconds,seconds,minutes,hours] = [0,0,0,0];
+       let timerRef = document.getElementById('chronotime');
+       let int = null;
+
+       document.getElementById('startgame').addEventListener('click',  ()=>{
+           if(int!==null){
+              clearInterval(int);
+            }
+         int = setInterval(displayTimer,10);
+        });
+
+
+       function displayTimer(){
+    milliseconds+=10;
+    if(milliseconds == 1000){
+        milliseconds = 0;
+        seconds++;
+        if(seconds == 60){
+            seconds = 0;
+            minutes++;
+            if(minutes == 60){
+                minutes = 0;
+                hours++;
+            }
+        }
+    }
+ let h = hours < 10 ? 0 + hours : hours;
+ let m = minutes < 10 ? 0 + minutes : minutes;
+ let s = seconds < 10 ? 0 + seconds : seconds;
+ let ms = milliseconds < 10 ? 0 + milliseconds : milliseconds < 100 ? 0 + milliseconds : milliseconds;
+ timerRef.innerHTML = ` ${m}:${s}:${ms}`;
+}
+
+
   </script>
 </html>
