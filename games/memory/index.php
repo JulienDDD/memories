@@ -48,17 +48,12 @@ require_once(SITE_ROOT.'utils/funcs.php'); ?>
         <a href="../../index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
         <div class="header-right">
         <a href="../../index.php" class="lien">Accueil</a>
-        <a href="index.php" class="lien" style="color:#ec9123">Jeu</a>
+        <a href="index.php" class="lien">Jeu</a>
         <a href="scores.php" class="lien">Scores</a>
         <a href="../../login.php" class="lien">Connexion</a>
         <a href="../../register.php" class="lien">Inscription</a>
         <a href="../../myAccount.php" class="lien">Mon espace</a>
         <a href="../../contact.php" class="lien">Nous contacter</a>
-        <?php 
-          if (isset($_SESSION['user'])) {
-            echo '<a href="disconnect.php" class="lien">'.$_SESSION['user']["pseudo"].'</a>';
-         }
-        ?>
             </div>
             
           </div>
@@ -116,12 +111,7 @@ require_once(SITE_ROOT.'utils/funcs.php'); ?>
             <div style="width: 53%;display: flex;"><a id="closebtn" style="margin-top: 2vh;float:right; color: white; font-size: 19px;"><i class="fa-solid fa-circle-xmark"></i></a></div>
           </div>
          
-          <div class="bubble left">Salut comment tu vas ?</div>
-      <div class="bubble right">Ca va et toi</div>
-      <div class="bubble left">Ca va</div>
-      <div class="bubble right">Super</div>
-      <div class="bubble right">Parfait alors</div>
-      
+          
 
 
 
