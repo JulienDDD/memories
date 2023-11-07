@@ -1,5 +1,14 @@
 
-<?php require_once("utils/common.php") ?>
+<?php require_once("utils/common.php");
+require_once("utils/funcs.php");
+if(isset($_SESSION['user']))
+{
+
+}
+else{
+    sendMessage('error', 'Merci de vous connecter.', 'login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

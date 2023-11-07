@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../assets/css/main.css">
+
 <?php
 require_once("common.php");
 require_once(SITE_ROOT . "utils/funcs.php");
@@ -58,7 +58,7 @@ if (
 ) {
     // SINON SI L UTILISATEUR SE CONNECTE
     $pdo = connectToDbAndGetPdo();
-    $stmt = $pdo->prepare('SELECT email, player_password FROM players WHERE email=:email');
+    $stmt = $pdo->prepare('SELECT * FROM players WHERE email=:email');
     $stmt->execute([
         ":email" => $_POST['email']
     ]);
@@ -71,8 +71,8 @@ if (
             "id" => $userId,
             "pseudo" => $userPseudo
         ];
-
-        sendMessage('success', 'Vous êtes connecté', 'myAccount.php');
+        
+        sendMessage('success', 'Vous êtes connecté', '../myAccount.php');
     }
     else{
 

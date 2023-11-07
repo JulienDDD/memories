@@ -4,8 +4,12 @@ require_once(SITE_ROOT.'utils/database.php');
 require_once(SITE_ROOT.'utils/funcs.php');
 $_SESSION['currentPage'] = "scores";
 $pdo = connectToDbAndGetPdo();
-if(!isset($_SESSION['user'])){
-  sendMessage("error", "Veuillez vous connecter", "../../memories/login.php");
+if(isset($_SESSION['user']))
+{
+
+}
+else{
+  sendMessage('error', 'Merci de vous connecter.', '../../login.php');
 }
 ?>
 <!DOCTYPE html>

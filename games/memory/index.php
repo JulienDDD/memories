@@ -1,3 +1,16 @@
+<?php 
+ require_once('../../utils/database.php');
+require_once('../../utils/common.php');
+require_once('../../utils/funcs.php');
+
+if(isset($_SESSION['user']))
+{
+
+}
+else{
+  sendMessage('error', 'Merci de vous connecter.', '../../login.php');
+}
+?>
 <!DOCTYPE html>
   <html lang="fr">
     <head>
@@ -70,7 +83,7 @@
       <center><div class="border_jeu"></div></center>
       
       <br>
-      <center><span style="color: white; font-size: 53px;" id="chronotime">0:0:000</span></center>
+      <center><span style="color: white; font-size: 53px;" id="chronotime">0:0:00 <?php echo $_SESSION['user']['pseudo']; ?></span></center>
 
   
       <br>
@@ -100,20 +113,232 @@
             <img src="../../assets/img/dos_carte.png" class="dos_carte">
           </div>
         </div>
-      
-        <div class="chat-popup" id="chat-popup" style="margin-top: -122px;">
-          
-          <div class="chat-title"><div style="display: flex;  font-size: 15; width: 200%;"><span style="margin-left: 10px; color: white;margin-top: 2vh;"> Username  <br><span style="color: green; font-size: 9px; top: 50px;"><i class="fa-regular fa-circle-dot"></i> EN LIGNE</span></span> </div>
-            <div style="width: 53%;display: flex;"><a id="closebtn" style="margin-top: 2vh;float:right; color: white; font-size: 19px;"><i class="fa-solid fa-circle-xmark"></i></a></div>
-          </div>
-         
-          
+      <style>
+        fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+h4, h5 {
+	line-height: 1.5em;
+	margin: 0;
+}
+
+hr {
+	background: #e9e9e9;
+    border: 0;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+    height: 1px;
+    margin: 0;
+    min-height: 1px;
+}
+
+img {
+    border: 0;
+    display: block;
+    height: auto;
+    max-width: 100%;
+}
+
+input {
+	border: 0;
+	color: inherit;
+    font-family: inherit;
+    font-size: 100%;
+    line-height: normal;
+    margin: 0;
+}
+
+p { margin: 0; }
+
+.clearfix { zoom: 1; } /* For IE 6/7 */
+.clearfix:before, .clearfix:after {
+    content: "";
+    display: table;
+}
+.clearfix:after { clear: both; }
+
+/* ---------- LIVE-CHAT ---------- */
+
+#live-chat {
+	bottom: 0;
+	font-size: 12px;
+	right: 24px;
+	position: fixed;
+	width: 300px;
+}
+
+#live-chat header {
+	background: #293239;
+	border-radius: 5px 5px 0 0;
+	color: #fff;
+	cursor: pointer;
+	padding: 16px 24px;
+}
+
+#live-chat h4:before {
+	background: #1a8a34;
+	border-radius: 50%;
+	content: "";
+	display: inline-block;
+	height: 8px;
+	margin: 0 8px 0 0;
+	width: 8px;
+}
+
+#live-chat h4 {
+	font-size: 12px;
+}
+
+#live-chat h5 {
+	font-size: 10px;
+}
+
+#live-chat form {
+	padding: 24px;
+}
+
+#live-chat input[type="text"] {
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	padding: 8px;
+	outline: none;
+	width: 234px;
+}
+
+.chat-message-counter {
+	background: #e62727;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	display: none;
+	font-size: 12px;
+	font-weight: bold;
+	height: 28px;
+	left: 0;
+	line-height: 28px;
+	margin: -15px 0 0 -15px;
+	position: absolute;
+	text-align: center;
+	top: 0;
+	width: 28px;
+}
+
+.chat-close {
+	background: #1b2126;
+	border-radius: 50%;
+	color: #fff;
+	display: block;
+	float: right;
+	font-size: 10px;
+	height: 16px;
+	line-height: 16px;
+	margin: 2px 0 0 0;
+	text-align: center;
+	width: 16px;
+}
+
+.chat {
+	background: #fff;
+}
+
+.chat-history {
+	height: 252px;
+	padding: 8px 24px;
+	overflow-y: scroll;
+}
+
+.chat-message {
+	margin: 16px 0;
+}
+
+.chat-message img {
+	border-radius: 50%;
+	float: left;
+}
+
+.chat-message-content {
+	margin-left: 56px;
+}
+
+.chat-time {
+	float: right;
+	font-size: 10px;
+}
+
+.chat-feedback {
+	font-style: italic;	
+	margin: 0 0 0 80px;
+}
+      </style>
+        <div id="live-chat">
+		
+		<header class="clearfix">
+			
+			<a href="#" style="text-decoration: none;" class="chat-close">X</a>
+
+			<h4>Général</h4>
+
+			<span class="chat-message-counter">3</span>
+
+		</header>
+<?php 
+// Récupération des 20 derniers messages 
+$pdo = connectToDbAndGetPdo();
+
+$stmt = $pdo->prepare('SELECT M.*, P.* 
+FROM messages AS M
+LEFT JOIN players AS P ON M.id_sender = P.id_player ORDER BY M.date_comment DESC LIMIT 20');
+$messages = $stmt->execute();
+$messages = $stmt->fetchAll();
 
 
+if($_SERVER['REQUEST_METHOD'] == "POST" 
+&& isset($_POST['message'])
+)
+{
+sendChatMessage($_POST['message'], $_SESSION['user']['id'], $pdo);
+}
 
 
-      <input type="text" style="width: 94.5%;border-radius: 0px;  position: fixed; bottom: 0;" placeholder="Saisissez votre message...">
-        </div>
+?>
+		<div class="chat">
+			<div class="chat-history">
+				<?php 
+
+foreach($messages as $message)
+{
+echo '<div class="chat-message clearfix">
+<div class="chat-message-content clearfix">
+    <span class="chat-time">'.$message->date_comment.'</span>
+    <h5>'.$message->pseudo.'</h5>
+    <p>'.$message->comments.'</p>
+  </div>
+</div>';
+}
+        
+        ?>
+				<hr>
+				
+
+			</div> <!-- end chat-history -->
+
+
+			<form action="#" method="post">
+
+				<fieldset>
+					
+					<input type="text" name="message" style="color: black; background-color: white;" placeholder="Saisissez votre message..." autofocus>
+					<input type="hidden">
+
+				</fieldset>
+
+			</form>
+
+		</div> <!-- end chat -->
+
+	</div> <!-- end live-chat -->
 
       
 
@@ -155,23 +380,7 @@
     </body>
 
     <script>
-      let closebtn = document.getElementById("closebtn");
-      let popup = document.getElementById("chat-popup");
-  
-      closebtn.addEventListener("click", () => {
-
-        if(popup.style.display != "none")
-        {
-       
-        popup.style.display = 'none'; 
-        }
-
-        else{
-          popup.style.display = 'grid'; 
-        }
-
-
-       });
+     
 
     
        let [milliseconds,seconds,minutes,hours] = [0,0,0,0];
