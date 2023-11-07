@@ -4,7 +4,7 @@ session_start();
 $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
 ?>
 <div class="under-header" id="top">        
-  <div class="header " style="margin-top:-11.5vw">    
+  <div class="header " style="margin-top:-13vw">    
     <a href="index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
     <div class="header-right">
       <a href="index.php" class="lien">Accueil</a>

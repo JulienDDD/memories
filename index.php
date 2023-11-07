@@ -35,13 +35,13 @@ $maxscore = $result->maxscore;
     </head>
     <body class="index" style="background-color: #151231;">
         <header>
-            <div class="under-header" >
-                <div class="header">
+            <div class="under-header"">
+                <div class="header" style="margin-top: -11.2vw;">
                     <a href="index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
                     <div class="header-right">
                         <a href="index.php" class="lien" style="color:#ec9123">Accueil</a>
                         <a href="games/memory/index.php" class="lien">Jeu</a>
-                        <a href="scores.php" class="lien">Scores</a>
+                        <a href="games/memory/scores.php" class="lien">Scores</a>
                         <a href="login.php" class="lien">Connexion</a>
                         <a href="register.php" class="lien">Inscription</a>
                         <a href="myAccount.php" class="lien">Mon espace</a>
