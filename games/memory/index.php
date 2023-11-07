@@ -1,5 +1,26 @@
 <script>
-  
+function getDifficulty(selectElement) {
+  var selectedValue = selectElement.value;
+  if (selectedValue === "") {
+      alert("Veuillez sélectionner une option !");
+  } else {
+      console.log("La difficulté sélectionnée est : " + selectedValue);
+  }
+}
+
+function getTheme(selectElement) {
+  var selectedValue = selectElement.value;
+  if (selectedValue === "") {
+      alert("Veuillez sélectionner une option !");
+  } else {
+      console.log("Le thème sélectionnée est : " + selectedValue);
+  }
+}
+
+
+
+
+
 
 
 
@@ -49,7 +70,7 @@ require_once(SITE_ROOT.'utils/funcs.php'); ?>
       <br/>
       <div class="choix">
         <div class="choix1et2">
-          <select style="width: 17vw ;margin: 1vw 10vw; background-color:#ec9123; padding:1vw; color:cornsilk; font-size:1em; text-align:center; border-radius:2px;">
+          <select id="theme" onchange="getTheme(this)" style="width: 17vw ;margin: 1vw 10vw; background-color:#ec9123; padding:1vw; color:cornsilk; font-size:1em; text-align:center; border-radius:2px;">
             <option value="">Choisissez un thème</option>
             <option value="1">Thème 1</option>
             <option value="2">Thème 2</option>
@@ -57,17 +78,17 @@ require_once(SITE_ROOT.'utils/funcs.php'); ?>
           </select>
         </div>
         <div class="choix1et2">
-        <select style="width: 17vw ;margin: 1vw 10vw; background-color:#ec9123; padding:1vw; color:cornsilk; font-size:1em; text-align:center; border-radius:2px;">
-              <option value="">Choisissez une difficulté</option>
-              <option value="1">Difficulté 1</option>
-              <option value="2">Difficulté 2</option>
-              <option value="3">Difficulté 3</option>
-            </select>
+        <select id="difficulty" onchange="getDifficulty(this)" style="width: 17vw ;margin: 1vw 10vw; background-color:#ec9123; padding:1vw; color:cornsilk; font-size:1em; text-align:center; border-radius:2px;">
+            <option value="">Choisissez une difficulté</option>
+            <option value="4">Difficulté 1</option>
+            <option value="6">Difficulté 2</option>
+            <option value="8">Difficulté 3</option>
+          </select>
         </div>
       </div>
       <div class="global_theme">
         <div class="txt_imgtheme">
-          <h4 class="txt_theme">Exemple du thème 1 : </h4>
+          <h4 class="txt_theme">Exemple du thème 1 :</h4>
           <img src="../../assets/img/ex_theme1.png" class="img_theme">
         </div>
         <div class="txt_imgtheme">
@@ -79,37 +100,16 @@ require_once(SITE_ROOT.'utils/funcs.php'); ?>
           <img src="../../assets/img/ex_theme3.png" class="img_theme">
         </div>
       </div>
-      <center><button style="background-color: #ec9123; text-decoration:none; color:cornsilk; padding:1.5vw; border-radius: 3px; border : none">LANCER LA PARTIE</button></center>
+      <center><button id="startGame"  onclick="startGame()" style="background-color: #ec9123; text-decoration:none; color:cornsilk; padding:1.5vw; border-radius: 3px; border : none">LANCER LA PARTIE</button></center>
       <br>
       <center><div class="border_jeu"></div></center>
       <br><br>
-      <div class="jeu_carte">
-        <div class="ligne_jeu">
-          <img src="../../assets/img/dos_carte.png" class="dos_carte">
-          <img src="../../assets/img/dos_carte.png" class="dos_carte">
-          <img src="../../assets/img/dos_carte.png" class="dos_carte">
-          <img src="../../assets/img/dos_carte.png" class="dos_carte">
-        </div>
-          <div class="ligne_jeu">
-            <img src="../../assets/img/dos_carte.png" class="dos_carte">
-            <img src="../../assets/img/dos_carte.png" class="dos_carte">
-            <img src="../../assets/img/dos_carte.png" class="dos_carte">
-            <img src="../../assets/img/dos_carte.png" class="dos_carte">
-          </div>
-          <div class="ligne_jeu">
-            <img src="../../assets/img/dos_carte.png" class="dos_carte">
-            <img src="../../assets/img/dos_carte.png" class="dos_carte">
-            <img src="../../assets/img/dos_carte.png" class="dos_carte">
-            <img src="../../assets/img/dos_carte.png" class="dos_carte">
-          </div>
-          <div class="ligne_jeu">
-            <img src="../../assets/img/dos_carte.png" class="dos_carte">
-            <img src="../../assets/img/dos_carte.png" class="dos_carte">
-            <img src="../../assets/img/dos_carte.png" class="dos_carte">
-            <img src="../../assets/img/dos_carte.png" class="dos_carte">
-          </div>
-        </div>
-      
+
+
+    <center>
+      <div id="tableauCartes"></div>
+    </center>
+      <br><br>
         <div class="chat-popup" id="chat-popup" style="margin-top: -122px;">
           
           <div class="chat-title"><div style="display: flex;  font-size: 15; width: 200%;"><span style="margin-left: 10px; color: white;margin-top: 2vh;"> Username  <br><span style="color: green; font-size: 9px; top: 50px;"><i class="fa-regular fa-circle-dot"></i> EN LIGNE</span></span> </div>
@@ -188,3 +188,53 @@ require_once(SITE_ROOT.'utils/funcs.php'); ?>
        });
   </script>
 </html>
+
+<script>
+var bouton = document.getElementById("startGame");
+bouton.addEventListener("click", function() {
+    console.log("Le bouton a été cliqué !");
+});
+
+
+function startGame() {
+    var selectDifficulte = document.getElementById("difficulty");
+    var difficulte = selectDifficulte.value;
+
+    if (difficulte == '4'){
+      var taille = 8
+      var espace = 0.6
+    }
+    else if (difficulte == '6'){
+      var taille = 6
+      var espace = 0.5
+    }
+    else{
+      var taille = 4
+      var espace = 0.4
+    }
+
+    if (difficulte !== "") {
+        var tableauCartes = document.getElementById("tableauCartes");
+        tableauCartes.innerHTML = ""; 
+
+        var colonnes = difficulte;
+        var lignes = difficulte;  
+
+        var tableauHTML = "<table>";
+
+        for (var i = 0; i < lignes; i++) {
+            tableauHTML += "<tr>";
+            for (var j = 0; j < colonnes; j++) {
+                tableauHTML += '<td><img src="../../assets/img/dos_carte.png" alt="" style="width:'+taille+'vw;margin:'+espace+'vw"></td>';
+            }
+            tableauHTML += "</tr>";
+        }
+
+        tableauHTML += "</table>";
+
+        tableauCartes.innerHTML = tableauHTML;
+    }
+}
+
+
+</script>
