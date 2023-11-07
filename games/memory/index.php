@@ -19,11 +19,6 @@ function getTheme(selectElement) {
 
 
 
-
-
-
-
-
 </script>
 <?php 
 require_once('../../utils/common.php');
@@ -100,6 +95,7 @@ require_once(SITE_ROOT.'utils/funcs.php'); ?>
       <center><div class="border_jeu"></div></center>
       <br><br>
 
+      <div id="timer" style="color: cornsilk; font-size: 1.5em; margin-top: 1.5vw; margin-left:5vw; margin-bottom:2vw"></div>
 
     <center>
       <div id="tableauCartes"></div>
@@ -215,7 +211,7 @@ function startGame() {
         for (var i = 0; i < lignes; i++) {
             tableauHTML += "<tr>";
             for (var j = 0; j < colonnes; j++) {
-                tableauHTML += '<td><img src="../../assets/img/dos_carte.png" alt="" style="width:'+taille+'vw;margin:'+espace+'vw"></td>';
+                tableauHTML += '<td><img src="../../assets/img/dos_carte.png" alt="" style="width:'+taille+'vw;margin:'+espace+'vw" onclick:"retournerCarte()"></td>';
             }
             tableauHTML += "</tr>";
         }
@@ -226,5 +222,47 @@ function startGame() {
     }
 }
 
+
+
+var bouton = document.getElementById("startGame");
+bouton.addEventListener("click", function() {
+    console.log("Le bouton a été cliqué !");
+    startGame(); 
+    startTimer(); 
+});
+
+var timerInterval; 
+var timerMinutes = 0;
+var timerSeconds = 0; 
+var timerMilliseconds = 0; 
+
+function startTimer() {
+    timerMinutes = 0; 
+    timerSeconds = 0; 
+    timerMilliseconds = 0; 
+    updateTimer(); 
+
+    timerInterval = setInterval(function() {
+        timerMilliseconds++; 
+        if (timerMilliseconds === 10) {
+            timerMilliseconds = 0;
+            timerSeconds++; 
+        }
+        if (timerSeconds === 60) {
+            timerSeconds = 0;
+            timerMinutes++; 
+        }
+        updateTimer(); 
+    }, 100); 
+}
+
+function updateTimer() {
+    var timerElement = document.getElementById("timer");
+    timerElement.innerHTML = "Temps écoulé : " + timerMinutes + " min " + timerSeconds + " sec " + timerMilliseconds + "00 ms";
+}
+
+function retournerCarte(){
+  
+}
 
 </script>
