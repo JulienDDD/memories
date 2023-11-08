@@ -35,9 +35,9 @@ require_once(SITE_ROOT.'utils/funcs.php'); ?>
       <div class="choix1et2">
         <select id="theme" onchange="getTheme(this)" style="width: 17vw; margin: 1vw 10vw; background-color: #ec9123; padding: 1vw; color: cornsilk; font-size: 1em; text-align: center; border-radius: 2px;">
           <option value="">Choisissez un thème</option>
-          <option value="1">Thème 1</option>
+          <option value="icon_vg">Thème 1</option>
           <option value="2">Thème 2</option>
-          <option value="3">Thème 3</option>
+          <option value="icon_meme">Thème 3</option>
         </select>
       </div>
       <div class="choix1et2">
@@ -125,24 +125,25 @@ require_once(SITE_ROOT.'utils/funcs.php'); ?>
 <script>
 
 
-var selectedDifficulty = 0; // Déclarer la variable selectedDifficulty en tant que variable globale
+var selectedDifficulty = 0;
+var theme; // Déclarer la variable theme en tant que variable globale
 
 function getDifficulty(selectElement) {
   var selectedValue = selectElement.value;
   if (selectedValue === "") {
     alert("Veuillez sélectionner une option !");
   } else {
-    selectedDifficulty = selectElement.value; // Mettre à jour la variable globale selectedDifficulty
+    selectedDifficulty = selectElement.value;
     console.log("La difficulté sélectionnée est : " + selectedDifficulty);
   }
 }
 
 function getTheme(selectElement) {
-  var selectedValue = selectElement.value;
+  theme = selectElement.value; // Mettre à jour la variable globale theme
   if (selectedValue === "") {
-      alert("Veuillez sélectionner une option !");
+    alert("Veuillez sélectionner une option !");
   } else {
-      console.log("Le thème sélectionné est : " + selectedValue);
+    console.log("Le thème sélectionné est : " + theme);
   }
 }
 
@@ -151,14 +152,11 @@ function getTheme(selectElement) {
 function shuffle(array) {
 let currentIndex = array.length,randomIndex;
 
-// While there remain elements to shuffle.
 while (currentIndex > 0) {
 
-// Pick a remaining element.
 randomIndex = Math.floor(Math.random() * currentIndex);
 currentIndex--;
 
-// And swap it with the current element.
 [array[currentIndex], array[randomIndex]] = [
   array[randomIndex], array[currentIndex]];
 }
@@ -167,13 +165,13 @@ return array;
 }
 
 
-var cardsFlipped = []; // Tableau pour stocker les cartes retournées
+var cardsFlipped = []; 
 
-var isLocked = false; // Variable de verrouillage
+var isLocked = false; 
 
 var pairsFound = 0;
 
-// ...
+
 
 function tourne_image(index) {
     if (isLocked) {
@@ -188,7 +186,8 @@ function tourne_image(index) {
 
     carte.style.transform = 'rotateY(180deg)';
     setTimeout(function() {
-        carte.src = '<?= PROJECT_FOLDER ?>assets/img/icon_vg/image' + index + '.png';
+        // Utilisez la variable theme ici
+        carte.src = '<?= PROJECT_FOLDER ?>assets/img/' + theme + '/image' + index + '.png';
         carte.classList.add('flipped');
         cardsFlipped.push(carte);
 
@@ -210,12 +209,9 @@ function tourne_image(index) {
                 cardsFlipped = [];
                 isLocked = false;
 
-                // Augmentez le nombre de paires trouvées
                 pairsFound++;
 
-                // Vérifiez si toutes les paires ont été trouvées
                 if (pairsFound === (selectedDifficulty * selectedDifficulty) / 2) {
-                    // Arrêtez le chronomètre ici et stockez le temps dans une variable
                     clearInterval(timerInterval);
                     var tempsTotal = timerMinutes + " min " + timerSeconds + " sec " + timerMilliseconds + "00 ms";
                     console.log("Toutes les paires ont été trouvées en " + tempsTotal);
@@ -231,18 +227,18 @@ function tourne_image(index) {
 
 
 
-var tableauCree = false; // Ajoutez une variable pour suivre si le tableau a déjà été créé
+var tableauCree = false; 
 
 function tableCreate() {
     if (tableauCree) {
-        return; // Si le tableau a déjà été créé, ne rien faire
+        return; 
     }
 
     const tableau = document.getElementById('tableauCartes');
     const tbl = document.createElement('table');
     tbl.style.width = '100px';
 
-    // Récupérez la valeur de la difficulté directement depuis l'élément select
+   
     var selectedDifficulty = document.getElementById('difficulty').value;
     var tab;
 
@@ -272,15 +268,15 @@ function tableCreate() {
     for (let i = 0; i < selectedDifficulty; i++) {
         const tr = tbl.insertRow();
         for (let j = 0; j < selectedDifficulty; j++) {
-            let index = i * selectedDifficulty + j; // Calcule l'index de la carte dans le tableau
+            let index = i * selectedDifficulty + j; 
             let value = tab[index];
             const td = tr.insertCell();
             let img = document.createElement('img');
             img.src = '<?= PROJECT_FOLDER ?>assets/img/dos_carte.png';
             img.className = 'carte ' + index.toString;
 
-            img.style.width = '5vw'; // Définissez la largeur souhaitée
-            img.style.height = '5vw'; // Définissez la hauteur souhaitée
+            img.style.width = '5vw'; 
+            img.style.height = '5vw'; 
             img.style.margin = '0.4vw';
             img.onclick = function() {
                 tourne_image(value);
@@ -291,7 +287,7 @@ function tableCreate() {
     }
 
     tableau.appendChild(tbl);
-    tableauCree = true; // Marquez le tableau comme créé
+    tableauCree = true; 
 }
 
 
@@ -301,7 +297,7 @@ function tableCreate() {
 var bouton = document.getElementById("startGame");
 bouton.addEventListener("click", function() {
     console.log("Le bouton a été cliqué !");
-    isGameStarted = true; // Commencez le chronomètre ici
+    isGameStarted = true;
     tableCreate();
     startTimer();
 });
@@ -312,7 +308,7 @@ var timerInterval;
 var timerMinutes = 0;
 var timerSeconds = 0;
 var timerMilliseconds = 0;
-var isGameStarted = false; // Ajoutez une variable pour suivre si le jeu a commencé
+var isGameStarted = false; 
 
 function startTimer() {
     timerMinutes = 0;
@@ -322,7 +318,7 @@ function startTimer() {
 
     timerInterval = setInterval(function() {
         if (!isGameStarted) {
-            clearInterval(timerInterval); // Arrêtez le timer si le jeu n'a pas encore commencé
+            clearInterval(timerInterval); 
             return;
         }
         timerMilliseconds++;
