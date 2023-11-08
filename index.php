@@ -35,9 +35,9 @@ $maxscore = $result->maxscore;
     </head>
     <body class="index" style="background-color: #151231;">
         <header>
-            <div class="under-header"">
+            <div class="under-header">
                 <div class="header" style="margin-top: -11.2vw;">
-                    <a href="index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
+                    <a href="index.php" class="lien" style="font-size: 1.5vw;">The Power of memory</a>
                     <div class="header-right">
                         <a href="index.php" class="lien" style="color:#ec9123">Accueil</a>
                         <a href="games/memory/index.php" class="lien">Jeu</a>
@@ -60,7 +60,7 @@ $maxscore = $result->maxscore;
             </div>
         </header>
         <main>
-            <br><br><br><br><br>
+            <div style="height:5vw"></div>
             <div class="triplepaysages">
                 <div class="paysage1"><img src="assets/img/zelda.jpeg" style="width: 37vw;"></div>
                 <div class="paysage2et3">
@@ -112,7 +112,7 @@ $maxscore = $result->maxscore;
                         </div>
                     </div>
                 </div>
-                <br><br><br><br><br><br><br><br>
+                <div style="height: 10vw;"></div>
                 <div class="stats">
                     <div class="div_img_stats"><img src="assets/img/GTA.jpeg" class="img_stats"></div>
                     <div class="quatrestats">
@@ -121,7 +121,6 @@ $maxscore = $result->maxscore;
                                 <h2 style="font-size: 2.5vw;"><?= $nbgames; ?></h2>
                                 <h4 style="margin-top: -2vw;">Parties jouées</h4>
                             </div>
-
                             <div class="secstat">
                                 <h2 style="font-size: 2.5vw;">1</h2>
                                 <h4 style="margin-top: -2vw;">Joueurs connectés</h4>
@@ -132,7 +131,6 @@ $maxscore = $result->maxscore;
                                 <h2 style="font-size: 2.5vw;"><?= $maxscore; ?></h2>
                                 <h4 style="margin-top: -2vw;">Meilleur Score</h4>
                             </div>
-
                             <div class="fourthstat">
                                 <h2 style="font-size: 2.5vw;"><?= $nbplayers; ?></h2>
                                 <h4 style="margin-top: -2vw;">Joueurs inscrits</h4>
@@ -140,7 +138,7 @@ $maxscore = $result->maxscore;
                         </div>
                     </div>
                 </div><br>
-                <br><br><br><br><br><br><br><br>
+                <div style="height: 12vw"></div>
                 <center><h2 style="font-size: 3vw;">Notre Équipe</h2></center>
                 <center><p style="color: #cab8c1; font-size: 1.2vw;">Ouisque commodo facilisis purus, interdum volutoat arcu viverra sed</p></center>
                 <center><img src="assets/img/mini_logo.png" style="width: 12vw;"></center>
@@ -165,7 +163,7 @@ $maxscore = $result->maxscore;
                         <i class="fa-brands fa-facebook" style="padding: 0.5vw;font-size: 1.3vw;"></i><i class="fa-brands fa-twitter" style="padding: 0.5vw; font-size: 1.3vw;"></i><i class="fa-brands fa-pinterest" style="padding: 0.5vw; font-size: 1.3vw;"></i>
                     </div>
                 </div>
-            <br><br><br>
+            <div style="height: 5vw";></div>
             </main>
             <footer style="background-color: #0c0b26;">
                 <div class="footer-content">
@@ -177,28 +175,26 @@ $maxscore = $result->maxscore;
                             <p class="mot_gris"><span class="mot_orange">Email :</span> support@powerofmemory.com</p>
                             <p class="mot_gris"><span class="mot_orange">Location :</span> Paris</p>
                             <div class="social-media">
-                                <button class="logo_marque"><i class="fa-brands fa-facebook"></i></button>
-                                <button class="logo_marque"><i class="fa-brands fa-twitter"></i></button>
-                                <button class="logo_marque"><i class="fa-brands fa-google"></i></button>
-                                <button class="logo_marque"><i class="fa-brands fa-pinterest"></i></button>
-                                <button class="logo_marque"><i class="fa-brands fa-instagram"></i></button>
+                                <button class="logo_marque" style="width:2.5vw; height: 2.5vw;"><i class="fa-brands fa-facebook"></i></button>
+                                <button class="logo_marque" style="width:2.5vw; height: 2.5vw;"><i class="fa-brands fa-twitter"></i></button>
+                                <button class="logo_marque" style="width:2.5vw; height: 2.5vw;"><i class="fa-brands fa-google"></i></button>
+                                <button class="logo_marque" style="width:2.5vw; height: 2.5vw;"><i class="fa-brands fa-pinterest"></i></button>
+                                <button class="logo_marque" style="width:2.5vw; height: 2.5vw;"><i class="fa-brands fa-instagram"></i></button>
                             </div>
                         </div>
                     </div>
                     <div class="pom">
                         <div class="pomtitre"> <h4 style="font-size: 1.4vw;">Power of Memory</h4></div>
-                        <div class="listpom">
-                            <ul>
-                                <li style="color: #ec9123; list-style-type: square;"><a href="jeu.html" class="list">Jouer !</a></li>
-                                <li style="color: #ec9123; list-style-type: square;"><a href="score.html" class="list">Les scores</a></li>
-                                <li style="color: #ec9123; list-style-type: square;"><a href="contact.html" class="list">Nous contacter</a></li>
+                        <div class="listpom" style="width: 20vw;">
+                            <ul >
+                                <li style="color: #ec9123; list-style-type: square; width:10vw"><a href="jeu.html" class="list">Jouer !</a></li>
+                                <li style="color: #ec9123; list-style-type: square; width:10vw"><a href="score.html" class="list">Les scores</a></li>
+                                <li style="color: #ec9123; list-style-type: square; width:10vw"><a href="contact.html" class="list">Nous contacter</a></li>
                             </ul>
                         </div>
                     </div>
                 </div>
-<br>
-<br>
-<br>
+                            <div style="height:4vw"></div>
                 <p class="mot_gris" style="margin-left: 13.5vw;">Copyright © 2022 Tous droits réservés</p>
 <br>
             </footer>
