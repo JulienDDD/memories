@@ -72,7 +72,7 @@ require_once(SITE_ROOT.'utils/funcs.php'); ?>
     <div id="timer" style="color: cornsilk; font-size: 1.5em; margin-top: 1.5vw; margin-left: 5vw; margin-bottom: 2vw"></div>
     <center><div id="tableauCartes" class="cartes"></div></center>
     <br><br>
-    <!-- Commenté car je n'ai pas vu où cela était utilisé
+    <!-- 
     <div class="chat-popup" id="chat-popup" style="margin-top: -122px;">
       <div class="chat-title">
         <div style="display: flex; font-size: 15; width: 200%;">
@@ -123,14 +123,17 @@ require_once(SITE_ROOT.'utils/funcs.php'); ?>
   </body>
 </html>
 <script>
-var difficulty
+
+
+var selectedDifficulty = 0; // Déclarer la variable selectedDifficulty en tant que variable globale
+
 function getDifficulty(selectElement) {
   var selectedValue = selectElement.value;
   if (selectedValue === "") {
-      alert("Veuillez sélectionner une option !");
+    alert("Veuillez sélectionner une option !");
   } else {
-      difficulty = selectedValue;
-      console.log("La difficulté sélectionnée est : " + difficulty);
+    selectedDifficulty = selectElement.value; // Mettre à jour la variable globale selectedDifficulty
+    console.log("La difficulté sélectionnée est : " + selectedDifficulty);
   }
 }
 
@@ -142,40 +145,6 @@ function getTheme(selectElement) {
       console.log("Le thème sélectionné est : " + selectedValue);
   }
 }
-if(difficulty=="4"){
-  var tab = [];
-  // Génération des valeurs de 1 à 16 (pour 16 paires)
-  for (let i = 1; i <= 8; i++) {
-    tab.push(i);
-}
-
-// Dupliquer le tableau pour avoir 32 images
-tab = tab.concat(tab);
-
-shuffle(tab); // Mélanger les valeurs
-}
-else if (difficulty=="6"){
-  var tab = [];
-  // Génération des valeurs de 1 à 16 (pour 16 paires)
-  for (let i = 1; i <= 18; i++) {
-    tab.push(i);
-  }
-  // Dupliquer le tableau pour avoir 32 images
-  tab = tab.concat(tab);
-  shuffle(tab); // Mélanger les valeurs
-}
-else{
-  var tab = [];
-  for (let i = 1; i <= 32; i++) {
-    tab.push(i);
-}
-// Dupliquer le tableau pour avoir 32 images
-tab = tab.concat(tab);
-
-shuffle(tab); // Mélanger les valeurs
-}
-
-
 
 
 
@@ -202,122 +171,179 @@ var cardsFlipped = []; // Tableau pour stocker les cartes retournées
 
 var isLocked = false; // Variable de verrouillage
 
+var pairsFound = 0;
+
+// ...
+
 function tourne_image(index) {
-if (isLocked) {
-return; // Si le jeu est verrouillé, ne rien faire
-}
+    if (isLocked) {
+        return;
+    }
 
-var carte = event.target; // Capture l'élément sur lequel vous avez cliqué
+    var carte = event.target;
 
-if (carte.classList.contains('flipped')) {
-return; // Si la carte est déjà retournée, ne rien faire
-}
+    if (carte.classList.contains('flipped')) {
+        return;
+    }
 
-carte.style.transform = 'rotateY(180deg)'; // Effectue la rotation de la carte
-
-// Attendez un court instant pour changer l'image
-setTimeout(function() {
-carte.src = '<?= PROJECT_FOLDER ?>assets/img/icon_vg/image' + index + '.png';
-carte.classList.add('flipped'); // Ajoute une classe "flipped" pour indiquer que la carte est retournée
-cardsFlipped.push(carte);
-
-if (cardsFlipped.length === 2) {
-  isLocked = true; // Verrouiller le jeu pendant la comparaison
-  if (cardsFlipped[0].src !== cardsFlipped[1].src) {
-    // Si les cartes sont différentes, attendez un court instant, puis retournez-les
+    carte.style.transform = 'rotateY(180deg)';
     setTimeout(function() {
-      cardsFlipped[0].style.transform = 'rotateY(0deg)'; // Retournez la première carte
-      cardsFlipped[1].style.transform = 'rotateY(0deg)'; // Retournez la deuxième carte
-      cardsFlipped[0].classList.remove('flipped'); // Retire la classe "flipped"
-      cardsFlipped[1].classList.remove('flipped');
-      cardsFlipped[0].src = '<?= PROJECT_FOLDER ?>assets/img/dos_carte.png';
-      cardsFlipped[1].src = '<?= PROJECT_FOLDER ?>assets/img/dos_carte.png';
-      cardsFlipped = [];
-      isLocked = false; // Déverrouiller le jeu
-    }, 1000); // Attendre 0.5 seconde (500 millisecondes) pour l'animation
-  } else {
-    // Si les cartes sont identiques, laissez-les affichées
-    cardsFlipped = [];
-    isLocked = false; // Déverrouiller le jeu
-  }
+        carte.src = '<?= PROJECT_FOLDER ?>assets/img/icon_vg/image' + index + '.png';
+        carte.classList.add('flipped');
+        cardsFlipped.push(carte);
+
+        if (cardsFlipped.length === 2) {
+            isLocked = true;
+
+            if (cardsFlipped[0].src !== cardsFlipped[1].src) {
+                setTimeout(function() {
+                    cardsFlipped[0].style.transform = 'rotateY(0deg)';
+                    cardsFlipped[1].style.transform = 'rotateY(0deg)';
+                    cardsFlipped[0].classList.remove('flipped');
+                    cardsFlipped[1].classList.remove('flipped');
+                    cardsFlipped[0].src = '<?= PROJECT_FOLDER ?>assets/img/dos_carte.png';
+                    cardsFlipped[1].src = '<?= PROJECT_FOLDER ?>assets/img/dos_carte.png';
+                    cardsFlipped = [];
+                    isLocked = false;
+                }, 1000);
+            } else {
+                cardsFlipped = [];
+                isLocked = false;
+
+                // Augmentez le nombre de paires trouvées
+                pairsFound++;
+
+                // Vérifiez si toutes les paires ont été trouvées
+                if (pairsFound === (selectedDifficulty * selectedDifficulty) / 2) {
+                    // Arrêtez le chronomètre ici et stockez le temps dans une variable
+                    clearInterval(timerInterval);
+                    var tempsTotal = timerMinutes + " min " + timerSeconds + " sec " + timerMilliseconds + "00 ms";
+                    console.log("Toutes les paires ont été trouvées en " + tempsTotal);
+                }
+            }
+        }
+    }, 100);
 }
-}, 100); // Attendre 0.1 seconde (100 millisecondes) avant la rotation
-}
 
 
 
 
 
-// Used like so
-shuffle(tab);
+
+
+var tableauCree = false; // Ajoutez une variable pour suivre si le tableau a déjà été créé
 
 function tableCreate() {
-const tableau = document.getElementById('tableauCartes');
-const tbl = document.createElement('table');
-tbl.style.width = '100px';
+    if (tableauCree) {
+        return; // Si le tableau a déjà été créé, ne rien faire
+    }
 
-for (let i = 0; i < difficulty; i++) {
-const tr = tbl.insertRow();
-for (let j = 0; j < difficulty; j++) {
-let index = i * difficulty + j; // Calcule l'index de la carte dans le tableau
-let value = tab[index];  
-const td = tr.insertCell();
-let img = document.createElement('img');
-img.src = '<?= PROJECT_FOLDER ?>assets/img/dos_carte.png';
-img.className = 'carte ' + index.toString;
+    const tableau = document.getElementById('tableauCartes');
+    const tbl = document.createElement('table');
+    tbl.style.width = '100px';
 
-img.style.width = '5vw'; // Définissez la largeur souhaitée
-img.style.height = '5vw'; // Définissez la hauteur souhaitée
-img.style.margin = '0.4vw';
-img.onclick = function() {
-  tourne_image(value);
-};
+    // Récupérez la valeur de la difficulté directement depuis l'élément select
+    var selectedDifficulty = document.getElementById('difficulty').value;
+    var tab;
 
-td.appendChild(img);
+    if (selectedDifficulty === "4") {
+        tab = [];
+        for (let i = 1; i <= 8; i++) {
+            tab.push(i);
+        }
+        tab = tab.concat(tab);
+        shuffle(tab);
+    } else if (selectedDifficulty === "6") {
+        tab = [];
+        for (let i = 1; i <= 18; i++) {
+            tab.push(i);
+        }
+        tab = tab.concat(tab);
+        shuffle(tab);
+    } else {
+        tab = [];
+        for (let i = 1; i <= 32; i++) {
+            tab.push(i);
+        }
+        tab = tab.concat(tab);
+        shuffle(tab);
+    }
+
+    for (let i = 0; i < selectedDifficulty; i++) {
+        const tr = tbl.insertRow();
+        for (let j = 0; j < selectedDifficulty; j++) {
+            let index = i * selectedDifficulty + j; // Calcule l'index de la carte dans le tableau
+            let value = tab[index];
+            const td = tr.insertCell();
+            let img = document.createElement('img');
+            img.src = '<?= PROJECT_FOLDER ?>assets/img/dos_carte.png';
+            img.className = 'carte ' + index.toString;
+
+            img.style.width = '5vw'; // Définissez la largeur souhaitée
+            img.style.height = '5vw'; // Définissez la hauteur souhaitée
+            img.style.margin = '0.4vw';
+            img.onclick = function() {
+                tourne_image(value);
+            };
+
+            td.appendChild(img);
+        }
+    }
+
+    tableau.appendChild(tbl);
+    tableauCree = true; // Marquez le tableau comme créé
 }
+
+
+
+
+
+var bouton = document.getElementById("startGame");
+bouton.addEventListener("click", function() {
+    console.log("Le bouton a été cliqué !");
+    isGameStarted = true; // Commencez le chronomètre ici
+    tableCreate();
+    startTimer();
+});
+
+
+
+var timerInterval;
+var timerMinutes = 0;
+var timerSeconds = 0;
+var timerMilliseconds = 0;
+var isGameStarted = false; // Ajoutez une variable pour suivre si le jeu a commencé
+
+function startTimer() {
+    timerMinutes = 0;
+    timerSeconds = 0;
+    timerMilliseconds = 0;
+    updateTimer();
+
+    timerInterval = setInterval(function() {
+        if (!isGameStarted) {
+            clearInterval(timerInterval); // Arrêtez le timer si le jeu n'a pas encore commencé
+            return;
+        }
+        timerMilliseconds++;
+        if (timerMilliseconds === 10) {
+            timerMilliseconds = 0;
+            timerSeconds++;
+        }
+        if (timerSeconds === 60) {
+            timerSeconds = 0;
+            timerMinutes++;
+        }
+        updateTimer();
+    }, 100);
 }
 
-tableau.appendChild(tbl);
+function updateTimer() {
+    var timerElement = document.getElementById("timer");
+    timerElement.innerHTML = "Temps écoulé : " + timerMinutes + " min " + timerSeconds + " sec " + timerMilliseconds + "00 ms";
 }
 
 
-
-// var bouton = document.getElementById("startGame");
-// bouton.addEventListener("click", function() {
-//     console.log("Le bouton a été cliqué !");
-//     tableCreate();
-//     startTimer();
-// });
-
-// var timerInterval;
-// var timerMinutes = 0;
-// var timerSeconds = 0;
-// var timerMilliseconds = 0;
-
-// function startTimer() {
-//     timerMinutes = 0;
-//     timerSeconds = 0;
-//     timerMilliseconds = 0;
-//     updateTimer();
-
-//     timerInterval = setInterval(function() {
-//         timerMilliseconds++;
-//         if (timerMilliseconds === 10) {
-//             timerMilliseconds = 0;
-//             timerSeconds++;
-//         }
-//         if (timerSeconds === 60) {
-//             timerSeconds = 0;
-//             timerMinutes++;
-//         }
-//         updateTimer();
-//     }, 100);
-// }
-
-// function updateTimer() {
-//     var timerElement = document.getElementById("timer");
-//     timerElement.innerHTML = "Temps écoulé : " + timerMinutes + " min " + timerSeconds + " sec " + timerMilliseconds + "00 ms";
-// }
 
 
 </script>
