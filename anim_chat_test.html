@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test d'animation de rectangle</title>
+  <style>
+    #rectangle {
+      width: 300px;
+      height: 50px;
+      background-color: rgb(136, 136, 143);
+      position: absolute;
+      top: 50vh;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: top 2s;
+    }
+  </style>
+</head>
+<body>
+  <button onclick="animateRectangle()">X</button>
+  <div id="rectangle"></div>
+
+  <script>
+    function animateRectangle() {
+      var rectangle = document.getElementById("rectangle");
+      rectangle.style.top = "100vh";
+    }
+  </script>
+</body>
+</html>

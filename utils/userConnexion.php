@@ -1,8 +1,8 @@
 
 <?php
 require_once("common.php");
-require_once(SITE_ROOT . "utils/funcs.php");
-require_once(SITE_ROOT . "utils/database.php");
+require_once("funcs.php");
+require_once("database.php");
 if (
     $_SERVER['REQUEST_METHOD'] == "POST" &&
     isset($_POST['registerme'], $_POST['email'], $_POST['pseudo'], $_POST['passe'], $_POST['comfirm_mdp']) &&

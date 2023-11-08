@@ -83,16 +83,96 @@ else{
       <center><div class="border_jeu"></div></center>
       
       <br>
+
+      <style> 
+      .flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+.flip-card:active .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: #2980b9;
+  color: white;
+  transform: rotateY(180deg);
+}
+      </style>
+
+
       <center><span style="color: white; font-size: 53px;" id="chronotime">0:0:00 <?php echo $_SESSION['user']['pseudo']; ?></span></center>
 
   
       <br>
       <div class="jeu_carte">
         <div class="ligne_jeu">
-          <img src="../../assets/img/dos_carte.png" class="dos_carte">
-          <img src="../../assets/img/dos_carte.png" class="dos_carte">
-          <img src="../../assets/img/dos_carte.png" class="dos_carte">
-          <img src="../../assets/img/dos_carte.png" class="dos_carte">
+        <div class="flip-card" id="1">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="assets/img/dos_carte.png" alt="cover" style="width:300px;height:300px;">
+    </div>
+    <div class="../../flip-card-back">
+     <img src="../../assets/img/icon_cs/karambit1.png" alt="cover" style="width:300px;height:300px;">
+    </div>
+  </div>
+</div>
+<div class="flip-card" id="2">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="../../assets/img/dos_carte.png" alt="cover" style="width:101px;height:101px;">
+    </div>
+    <div class="flip-card-back">
+     <img src="../../assets/img/icon_cs/karambit1.png" alt="cover" style="width:101px;height:101px;">
+    </div>
+  </div>
+</div>
+<div class="flip-card" id="3">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="../../assets/img/dos_carte.png" alt="cover" style="width:101px;height:101px;">
+    </div>
+    <div class="flip-card-back">
+     <img src="../../assets/img/icon_cs/karambit1.png" alt="cover" style="width:101px;height:101px;">
+    </div>
+  </div>
+</div>
+<div class="flip-card" id="4">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+      <img src="../../assets/img/dos_carte.png" alt="cover" style="width:101px;height:101px;">
+    </div>
+    <div class="flip-card-back">
+     <img src="../../assets/img/icon_cs/karambit1.png" alt="cover" style="width:101px;height:101px;">
+    </div>
+  </div>
+</div>
         </div>
           <div class="ligne_jeu">
             <img src="../../assets/img/dos_carte.png" class="dos_carte">
@@ -288,7 +368,7 @@ p { margin: 0; }
 $pdo = connectToDbAndGetPdo();
 
 $stmt = $pdo->prepare('SELECT M.*, P.* 
-FROM messages AS M
+FROM message AS M
 LEFT JOIN players AS P ON M.id_sender = P.id_player ORDER BY M.date_comment DESC LIMIT 20');
 $messages = $stmt->execute();
 $messages = $stmt->fetchAll();
@@ -313,7 +393,7 @@ echo '<div class="chat-message clearfix">
 <div class="chat-message-content clearfix">
     <span class="chat-time">'.$message->date_comment.'</span>
     <h5>'.$message->pseudo.'</h5>
-    <p>'.$message->comments.'</p>
+    <p>'.$message->comment.'</p>
   </div>
 </div>';
 }
