@@ -15,12 +15,9 @@ $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
       <a href="myAccount.php" class="lien" <?php if($_SESSION['currentPage'] == '/COURSES/powerofmemory/memories/myAccount.php'): ?> style="color: #EC9224;" <?php endif ?>>Mon espace</a>
       <a href="contact.php" class="lien" <?php if($_SESSION['currentPage'] == '/COURSES/powerofmemory/memories/contact.php'): ?> style="color: #EC9224;" <?php endif ?>>Nous contacter</a>
 
-      <?php 
-      if (isset($_SESSION['user'])) {
-        $pfppath =  getUserPfpPath('13');
-        echo '<a href="disconnect.php" class="lien"><img style="border-radius: 100px; width: 40%;border-style: solid; border-color: #EC9224;" src="'.$pfppath.'"></a>';
-      }
-      ?>
+        <?php if (isset($_SESSION['user'])) {
+            echo '<a href="disconnect.php" class="lien">'.$_SESSION['user']["pseudo"].'</a>';
+        }?>
     </div>
   </div>
   </br></br></br>
