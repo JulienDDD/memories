@@ -1,7 +1,13 @@
-<?php 
+<?php
+require_once('../../utils/database.php');
 require_once('../../utils/common.php');
-require_once(SITE_ROOT.'utils/database.php');
-require_once(SITE_ROOT.'utils/funcs.php'); ?>
+require_once('../../utils/funcs.php');
+
+if (isset($_SESSION['user'])) {
+} else {
+  sendMessage('error', 'Merci de vous connecter.', '../../login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -52,15 +58,15 @@ require_once(SITE_ROOT.'utils/funcs.php'); ?>
     <div class="global_theme">
       <div class="txt_imgtheme">
         <h4 class="txt_theme">Exemple du thème 1 :</h4>
-        <img src="../../assets/img/ex_theme1.png" class="img_theme">
+        <img src="../../assets/img/icon_vg/valorant.png" class="img_theme">
       </div>
       <div class="txt_imgtheme">
         <h4 class="txt_theme">Exemple du thème 2 :</h4>
-        <img src="../../assets/img/ex_theme2.png" class="img_theme">
+        <img src="../../assets/img/icon_CS/pistolet1.png" class="img_theme">
       </div>
       <div class="txt_imgtheme">
         <h4 class="txt_theme">Exemple du thème 3 :</h4>
-        <img src="../../assets/img/ex_theme3.png" class="img_theme">
+        <img src="../../assets/img/icon_meme/image5.png" class="img_theme">
       </div>
     </div>
     <center>

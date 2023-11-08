@@ -696,4 +696,9 @@ left: 0;
     text-align: center;
 }
 
-
+.carte {
+    width: 5vw;
+    height: 5vw;
+    margin: 0.4vw;
+    transition: transform 0.3s ease; /* Ajoutez une transition pour la transformation */
+  }

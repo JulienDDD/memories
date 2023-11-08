@@ -1,5 +1,11 @@
 
-<?php require_once("utils/common.php") ?>
+<?php require_once("utils/common.php");
+if(isset($_SESSION['user']))
+{
+    header('Location: myAccount.php');
+}
+
+?>
 
 <!DOCTYPE html>
   <html lang="fr">
