@@ -17,26 +17,20 @@ if (isset($_SESSION['user'])) {
             } ?>
             <div class="input-container"></div>
             <center>
-                <label for="email"></label>
-                <input type="text" id="email" name="email" placeholder="  Email" style="height: 2vw; width: 31.5vw; font-size: 1.1vw;" required>
-            </center>
-            <br>
-            <center>
-                <label for="pseudo"></label>
-                <input type="text" name="pseudo" id="pseudo" placeholder="  Pseudo" style="height: 2vw; width: 31.5vw; font-size: 1.1vw;" />
-            </center>
+            <label for="email"></label>
+            <input type="text" id="email" name="email" placeholder="  Email" style="height: 2vw; width: 31.5vw; font-size: 1.1vw;" required>
+            <br><br>
+            <label for="pseudo"></label>
+            <input type="text" name="pseudo" id="pseudo" placeholder="  Pseudo" style="height: 2vw; width: 31.5vw; font-size: 1.1vw;" />
             <br><br>
             <label for="mdp"></label>
-            <input type="password" name="passe" id="mdp" onchange="passwordCheck()" placeholder="  Mot de passe" style="height: 2vw; width: 31.5vw; font-size: 1.1vw;" />
-            <br>
-            <center>
-                <label for="comfirm_mdp"></label>
-                <input type="password" id="comfirm_mdp" name="comfirm_mdp" placeholder="  Confirmez le mot de passe" style="height: 2vw; width: 31.5vw; font-size: 1.1vw;" required>
-            </center>
-            <br>
-            <center>
-                <button type="submit" name="registerme" class="button_validation_inscription" style='height:3em;'>Inscription</button>
-                <br><br>
+            <input type="password" name="passe" id="mdp" onchange="afficherResultat()" placeholder="  Mot de passe" style="height: 2vw; width: 31.5vw; font-size: 1.1vw; "/>
+            <br><br>
+            <label for="comfirm_mdp"></label>
+            <input type="password" id="comfirm_mdp" name="comfirm_mdp" placeholder="  Confirmez le mot de passe" style="height: 2vw; width: 31.5vw; font-size: 1.1vw;" required>
+            <br><br>
+            <button type="submit" name="registerme" class="button_validation_inscription" style='height:3em;'>Inscription</button>
+            <br><br>
             </center>
         </form>
         <script>
@@ -87,3 +81,55 @@ if (isset($_SESSION['user'])) {
         </footer>
     </body>
 </html>
+
+<script>
+
+    function longueurmdp(password) {
+        return password.length >= 8;
+    }
+
+    function verifeCaractereSpeciale(password) {
+        const specialCharacterRegex = /[!@#\$%\^&\*\(\)_\+\-=\[\]{};':"\\|,.<>\/?]+/;
+        return specialCharacterRegex.test(password);
+    }
+
+    function contientMajuscule(password) {
+        const regexMajuscule = /[A-Z]/;
+        return regexMajuscule.test(password);
+    }
+
+
+    function verifieChiffre(password) {
+        const regexChiffre = /[0-9]/; 
+        return regexChiffre.test(password);
+    }
+
+    function MotDePasseFort() {
+        var motDePasse = document.getElementById('mdp');
+        return longueurmdp(motDePasse.value) && verifeCaractereSpeciale(motDePasse.value) && contientMajuscule(motDePasse.value) && verifieChiffre(motDePasse.value);
+    }
+    function MotDePassemoyen() {
+        var motDePasse = document.getElementById('mdp');
+        return longueurmdp(motDePasse.value) && contientMajuscule(motDePasse.value) && verifieChiffre(motDePasse.value);
+
+    }
+
+
+        function afficherResultat() {
+    var motDePasse = document.getElementById('mdp');
+    var resultat = document.getElementById('resultat');
+
+    if (MotDePasseFort()) {
+        resultat.innerText = "Mot de passe fort";
+        resultat.className = 'text-fort'; 
+    } else if (MotDePassemoyen()) {
+        resultat.innerText = "Mot de passe moyen";
+        resultat.className = 'text-moyen'; 
+    } else {
+        resultat.innerText = "Mot de passe faible";
+        resultat.className = 'text-faible';
+    }
+}
+
+
+    </script>
