@@ -2,7 +2,7 @@
 <?php require_once("utils/common.php");
 require_once("utils/funcs.php");
 
-echo getUserPfpPath('13');
+
 if(isset($_SESSION['user']))
 {
 

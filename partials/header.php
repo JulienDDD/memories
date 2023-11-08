@@ -17,7 +17,7 @@ $_SESSION['currentPage'] = $_SERVER['REQUEST_URI'];
 
       <?php 
       if (isset($_SESSION['user'])) {
-        $pfppath =  getUserPfpPath('13');
+        $pfppath =  getUserPfpPath($_SESSION['user']['id']);
         echo '<a href="disconnect.php" class="lien"><img style="border-radius: 100px; width: 40%;border-style: solid; border-color: #EC9224;" src="'.$pfppath.'"></a>';
       }
       ?>

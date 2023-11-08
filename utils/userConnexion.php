@@ -43,6 +43,9 @@ if (
 
         ]);
 
+
+     
+
         
 
         sendMessage('success', 'Votre compte a été créer !', '../login.php');
@@ -71,6 +74,12 @@ if (
             "id" => $userId,
             "pseudo" => $userPseudo
         ];
+
+        $userfilepath = "../userFiles/".$_SESSION['user']['id'];
+        if(!file_exists($userfilepath)){
+         mkdir($userfilepath, 0777, true);
+         copy('sample.png', $userfilepath.'/pfp.png');
+        }
         
         sendMessage('success', 'Vous êtes connecté', '../myAccount.php');
     }

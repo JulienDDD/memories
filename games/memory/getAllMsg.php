@@ -14,8 +14,12 @@ $messages = $stmt->fetchAll();
 
 foreach($messages as $message)
 {
+
+  $pfpath = getUserPfpPath($message->id_sender);
 print '<div class="chat-message clearfix">
+<img src="../../'.$pfpath.'" alt="" width="32" height="32">
 <div class="chat-message-content clearfix">
+
     <span class="chat-time">'.$message->date_comment.'</span>
     <h5>'.$message->pseudo.'</h5>
     <p>'.$message->comments.'</p>
