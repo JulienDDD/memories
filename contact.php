@@ -1,4 +1,5 @@
 <?php require_once("utils/common.php");
+require_once("utils/funcs.php");
 
 if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['submitcontact']) && !empty($_POST['email']) && !empty($_POST['subject']) && !empty($_POST['nom']) && !empty($_POST['message']))
 {

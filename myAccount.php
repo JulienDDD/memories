@@ -1,6 +1,8 @@
 
 <?php require_once("utils/common.php");
 require_once("utils/funcs.php");
+
+echo getUserPfpPath('13');
 if(isset($_SESSION['user']))
 {
 
@@ -8,6 +10,35 @@ if(isset($_SESSION['user']))
 else{
     sendMessage('error', 'Merci de vous connecter.', 'login.php');
 }
+
+
+if(isset($_POST['editpfp']))
+{
+
+   $imagetemp = $_FILES['filepfp']['tmp_name'];
+   $pfpPath = "userFiles/".$_SESSION['user']['id']."/";
+
+
+   //Créer le dossier au cas ou il existe pas : 
+   $userfilepath = "userFiles/".$_SESSION['user']['id'];
+   if(!file_exists($userfilepath)){
+    mkdir($userfilepath, 0777, true);
+   }
+
+
+   if(is_uploaded_file($imagetemp)) {
+         if(move_uploaded_file($imagetemp, $pfpPath . 'pfp.png')) {
+            header('refresh: 0');
+         }
+         else {
+          echo "pas upload";
+        }
+    }
+else {
+    echo "pas upload";
+}
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -67,10 +98,13 @@ else{
                 </form>
                 </div>
             </div>
+            <form method="POST" enctype="multipart/form-data">
             <div class="file-upload">
-                <label for="file">Choisir une image :</label>
-                <input type="file" id="file" name="file">
-            </div
+                <label for="filepfp">Choisir une image :</label>
+                <input type="file" id="filepfp" name="filepfp">
+               </div>
+               <center><button type="submit" name="editpfp" style="width: 23%; height:40px; border: none;" class="espace-button">Modifier ma photo de profil</button></center>
+
             </div>
         </div>
     </main>

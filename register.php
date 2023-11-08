@@ -1,4 +1,9 @@
-<?php require_once("utils/common.php") ?>
+<?php require_once("utils/common.php");
+if(isset($_SESSION['user']))
+{
+    header('Location: myAccount.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <?= require_once(SITE_ROOT."partials/head.php");?>
@@ -20,8 +25,8 @@
 </br></br>
 
     <label for="mdp"></label>
-    <input type="password" name="passe" id="mdp" placeholder="  Mot de passe" style="height: 2vw; width: 31.5vw; font-size: 1.1vw; "/></center>
-
+    <input type="password" name="passe" id="mdp" onchange="passwordCheck()" placeholder="  Mot de passe" style="height: 2vw; width: 31.5vw; font-size: 1.1vw; "/></center>
+    
             
 </br>
     <center><label for="comfirm_mdp"></label>
@@ -35,7 +40,23 @@
         </center>
 </center>
 </form>
-</form>
+
+<script>
+
+    function passwordCheck(){
+        let passwordInput = document.getElementById('mdp');
+        let passwordValue = passwordInput.value;
+        console.log(passwordValue.length);
+        if(passwordValue.length >= 8)
+        {
+            console.log('Superieur ou egal a 8 donc c op fdp ');
+        }
+        else{
+            console.log('Inferieur à 8 donc ceest pas op fdp');
+        }
+
+    }
+    </script>
 
 <footer style="background-color: #0c0b26;">
   <div class="footer-content">
