@@ -680,3 +680,15 @@ left: 0;
 .all_container{
     right: 0
 }
+
+.text-faible {
+    color: red;
+}
+
+.text-moyen {
+    color: orange;
+}
+
+.text-fort {
+    color: green;
+}

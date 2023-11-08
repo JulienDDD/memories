@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php require_once("utils/common.php") ?>
-<?php require_once(SITE_ROOT."utils/database.php") ?>
+<?php require_once("utils/database.php") ?>
 <?php
 
 /* INITIALISATION PDO DB */
