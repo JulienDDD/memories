@@ -42,7 +42,7 @@ if (isset($_SESSION['user'])) {
         <select id="theme" onchange="getTheme(this)" style="width: 17vw; margin: 1vw 10vw; background-color: #ec9123; padding: 1vw; color: cornsilk; font-size: 1em; text-align: center; border-radius: 2px;">
           <option value="">Choisissez un thème</option>
           <option value="icon_vg">Thème 1</option>
-          <option value="2">Thème 2</option>
+          <option value="icon_acteur">Thème 2</option>
           <option value="icon_meme">Thème 3</option>
         </select>
       </div>
@@ -62,7 +62,7 @@ if (isset($_SESSION['user'])) {
       </div>
       <div class="txt_imgtheme">
         <h4 class="txt_theme">Exemple du thème 2 :</h4>
-        <img src="../../assets/img/icon_CS/pistolet1.png" class="img_theme">
+        <img src="../../assets/img/icon_acteur/image3.png" class="img_theme">
       </div>
       <div class="txt_imgtheme">
         <h4 class="txt_theme">Exemple du thème 3 :</h4>
