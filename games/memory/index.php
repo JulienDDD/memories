@@ -355,4 +355,33 @@ function updateTimer() {
 
 
 
+
+var ttl = new XMLHttpRequest();
+
+// Configurez la requête AJAX
+ttl.open("POST", "votre_endpoint_d_enregistrement_du_temps", true);
+
+// Définissez le type de contenu de la requête (dans ce cas, JSON)
+ttl.setRequestHeader("Content-Type", "application/json");
+
+// Définissez la fonction de rappel pour la réponse de la requête
+ttl.onreadystatechange = function() {
+  if (ttl.readyState === XMLHttpRequest.DONE) {
+    if (ttl.status === 200) {
+      // La requête a réussi
+      console.log("Temps enregistré avec succès.");
+    } else {
+      // La requête a échoué
+      console.error("Erreur lors de l'enregistrement du temps.");
+    }
+  }
+};
+
+// Convertissez le temps en JSON
+var data = JSON.stringify({ temps: temps });
+
+// Envoyez la requête AJAX avec les données
+ttl.send(data);
+
+
 </script>
