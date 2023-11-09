@@ -68,7 +68,7 @@ if (isset($_SESSION['user'])) {
   </div>
   <div class="global_theme">
     <div class="txt_imgtheme">
-      <h4 class="txt_theme">Exemple du thème 1 : </h4>
+      <h4 id="txtheme" class="txt_theme">Exemple du thème 1 : </h4>
       <img src="../../assets/img/ex_theme1.png" class="img_theme">
     </div>
     <div class="txt_imgtheme">
@@ -92,6 +92,31 @@ if (isset($_SESSION['user'])) {
 
 
   <br>
+  <div id="myModal" class="modal">
+<div class="modal-content">
+
+  <center><p style="font-size: 32px;"><i style="color: green;" class="fa-solid fa-square-check"></i> Partie terminée
+<br><br>
+<span style="font-size: 22px;">La partie est désormais terminée, le temps total de la partie est de <span id="totaltime"> 32 s </span></span>
+</p>
+<br>
+<br>
+<button id="close-btn" style="width: 60%;background-color: #ec9123; text-decoration:none; color:cornsilk; padding:1.5vw; border-radius: 3px; border : none">Rejouer</button>
+</center>
+</div>
+</div>
+
+<script>
+let myModal = document.getElementById('myModal');
+let closeModal = document.getElementById('close-btn');
+
+closeModal.addEventListener('click', function(){
+  
+  myModal.style.display = "none";
+
+});
+</script>
+
   <div class="jeu_carte">
     <div class="ligne_jeu">
       <img src="../../assets/img/dos_carte.png" class="dos_carte">
@@ -119,6 +144,45 @@ if (isset($_SESSION['user'])) {
     </div>
   </div>
   <style>
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  border-color: #EC9123;
+  background-color: #151231;
+  color: #EC9123;
+  margin: 15% auto; 
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 35px;
+  font-weight: bold;
+ margin-top: -2%;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
     fieldset {
       border: 0;
       margin: 0;
@@ -337,14 +401,30 @@ LEFT JOIN players AS P ON M.id_sender = P.id_player ORDER BY M.date_comment DESC
                 document.getElementById('msgscontainer').innerHTML = data;
               }
             });
-            console.log('FETCHEDx');
+        
           }
           $(document).ready(function() {
             setInterval("fetchMsgs()", 1000);
+            //setInterval("saveScore()", 1000);
           });
 
 
           setTimeout("fetchMsgs();", 1);
+
+          var idPlayer = "<?php echo $_SESSION['user']['id']; ?>";
+          function saveScore(){
+            $.ajax({
+              type: 'POST',
+              url: 'saveScore.php',
+              data: {'player_id' : idPlayer, 'tempsTotal' : tempsTotal, 'gamestrength' : gamestrength},
+              success: function(data) {
+                document.getElementById('myModal').style.display = "block";
+              }
+            });
+            
+          }
+
+          
         </script>
         <hr>
 
@@ -406,6 +486,11 @@ LEFT JOIN players AS P ON M.id_sender = P.id_player ORDER BY M.date_comment DESC
     <p class="mot_gris" style="margin-left: 13.5vw;">Copyright © 2022 Tous droits réservés</p>
     <br>
   </footer>
+
+ 
+
+
+
 </body>
 
 <script>
