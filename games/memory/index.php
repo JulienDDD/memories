@@ -38,6 +38,8 @@ if (isset($_SESSION['user'])) {
     </div>
     <br/><br/><br>
     <center>
+    <br/><br/><br>
+    <center>
       <h1 style="margin-top: 0px; display: block;">The Power Of Memory</h1>
     </center>
   </div>
@@ -62,8 +64,8 @@ if (isset($_SESSION['user'])) {
   </div>
   <div class="global_theme">
     <div class="txt_imgtheme">
-      <h4 id="txtheme" class="txt_theme">Exemple du thème 1 : </h4>
-      <img src="../../assets/img/ex_theme1.png" class="img_theme">
+      <h4 class="txt_theme">Exemple du thème 1 :</h4>
+      <img src="../../assets/img/icon_vg/valorant.png" class="img_theme">
     </div>
     <div class="txt_imgtheme">
       <h4 class="txt_theme">Exemple du thème 2 :</h4>
@@ -479,11 +481,6 @@ LEFT JOIN players AS P ON M.id_sender = P.id_player ORDER BY M.date_comment DESC
     <p class="mot_gris" style="margin-left: 13.5vw;">Copyright © 2022 Tous droits réservés</p>
     <br>
   </footer>
-
- 
-
-
-
 </body>
 </html>
 

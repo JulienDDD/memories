@@ -540,8 +540,9 @@ left: 0;
 
 }
 .img_theme{
-    width: 12vw;
-    margin: 0 1.9vw;
+    width: 11vw;
+    margin: 0 3vw;
+
 }
 
 .jeu_carte{
@@ -696,4 +697,9 @@ left: 0;
     text-align: center;
 }
 
-
+.carte {
+    width: 5vw;
+    height: 5vw;
+    margin: 0.4vw;
+    transition: transform 0.3s ease; 
+  }
