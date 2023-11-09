@@ -106,7 +106,7 @@ if($_SERVER['REQUEST_METHOD'] == "POST" && isset($_POST['editmail']) && !empty($
  <?php require_once("utils/common.php");
 require_once("utils/funcs.php");
 
-echo getUserPfpPath('13');
+
 if(isset($_SESSION['user']))
 {
 
