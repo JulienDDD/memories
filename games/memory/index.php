@@ -10,7 +10,6 @@ if (isset($_SESSION['user'])) {
 ?>
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,16 +18,11 @@ if (isset($_SESSION['user'])) {
   <link rel="stylesheet" href="../../assets/css/header.css">
   <link rel="stylesheet" href="../../assets/css/footerindex.css">
   <script src="https://kit.fontawesome.com/fd7b39a087.js" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-
 </head>
-
 <body style="background-color: #151231; background-size: 1520px 800px;">
   <div class="under-header" id="top">
-
     <div class="header">
-
-      <a href="../../index.php" class="lien" style="font-size: 1.5em;">The Power of memory</a>
+      <a href="../../index.php" class="lien" style="font-size: 1.5em;">The Power of Memory</a>
       <div class="header-right">
         <a href="../../index.php" class="lien">Accueil</a>
         <a href="index.php" class="lien">Jeu</a>
@@ -37,317 +31,62 @@ if (isset($_SESSION['user'])) {
         <a href="../../register.php" class="lien">Inscription</a>
         <a href="../../myAccount.php" class="lien">Mon espace</a>
         <a href="../../contact.php" class="lien">Nous contacter</a>
-      </div>
-
-    </div>
-    <br/>
-    <div class="choix">
-      <div class="choix1et2">
-        <select id="theme" onchange="getTheme(this)" style="width: 17vw; margin: 1vw 10vw; background-color: #ec9123; padding: 1vw; color: cornsilk; font-size: 1em; text-align: center; border-radius: 2px;">
-          <option value="">Choisissez un thème</option>
-          <option value="icon_vg">Thème 1</option>
-          <option value="2">Thème 2</option>
-          <option value="icon_meme">Thème 3</option>
-        </select>
-      </div>
-      <div class="choix1et2">
-        <select id="difficulty" onchange="getDifficulty(this)" style="width: 17vw; margin: 1vw 10vw; background-color: #ec9123; padding: 1vw; color: cornsilk; font-size: 1em; text-align: center; border-radius: 2px;">
-          <option value="">Choisissez une difficulté</option>
-          <option value="4">Difficulté 1</option>
-          <option value="6">Difficulté 2</option>
-          <option value="8">Difficulté 3</option>
-        </select>
+        <?php if (isset($_SESSION['user'])) {
+          echo '<a href="../../disconnect.php" class="lien">' . $_SESSION['user']["pseudo"] . '</a>';
+        } ?>
       </div>
     </div>
-    <div class="global_theme">
-      <div class="txt_imgtheme">
-        <h4 class="txt_theme">Exemple du thème 1 :</h4>
-        <img src="../../assets/img/ex_theme1.png" class="img_theme">
-      </div>
-      <div class="txt_imgtheme">
-        <h4 class="txt_theme">Exemple du thème 2 :</h4>
-        <img src="../../assets/img/ex_theme2.png" class="img_theme">
-      </div>
-      <div class="txt_imgtheme">
-        <h4 class="txt_theme">Exemple du thème 3 :</h4>
-        <img src="../../assets/img/ex_theme3.png" class="img_theme">
-      </div>
-    </div>
+    <br/><br/><br>
     <center>
-      <button id="startGame" onclick="tableCreate()" style="background-color: #ec9123; text-decoration: none; color: cornsilk; padding: 1.5vw; border-radius: 3px; border: none">LANCER LA PARTIE</button>
+      <h1 style="margin-top: 0px; display: block;">The Power Of Memory</h1>
     </center>
-    <br>
-    <center><div class="border_jeu"></div></center>
-    <br><br>
-    <div id="timer" style="color: cornsilk; font-size: 1.5em; margin-top: 1.5vw; margin-left: 5vw; margin-bottom: 2vw"></div>
-    <center><div id="tableauCartes" class="cartes"></div></center>
-    <br><br>
-    <!-- 
-    <div class="chat-popup" id="chat-popup" style="margin-top: -122px;">
-      <div class="chat-title">
-        <div style="display: flex; font-size: 15; width: 200%;">
-          <span style="margin-left: 10px; color: white; margin-top: 2vh;">Username<br>
-            <span style="color: green; font-size: 9px; top: 50px;"><i class="fa-regular fa-circle-dot"></i> EN LIGNE</span>
-          </span>
-        </div>
-        <div style="width: 53%; display: flex;">
-          <a id="closebtn" style="margin-top: 2vh; float: right; color: white; font-size: 19px;"><i class="fa-solid fa-circle-xmark"></i></a>
-        </div>
-      </div>
-      <input type="text" style="width: 94.5%; border-radius: 0px; position: fixed; bottom: 0;" placeholder="Saisissez votre message...">
+  </div>
+  <br/>
+  <div class="choix">
+    <div class="choix1et2">
+      <select id="theme" onchange="getTheme(this)" style="width: 17vw; margin: 1vw 10vw; background-color: #ec9123; padding: 1vw; color: cornsilk; font-size: 1em; text-align: center; border-radius: 2px;">
+        <option value="">Choisissez un thème</option>
+        <option value="icon_vg">Thème 1</option>
+        <option value="icon_acteur">Thème 2</option>
+        <option value="icon_meme">Thème 3</option>
+      </select>
+    </div>
+    <div class="choix1et2">
+      <select id="difficulty" onchange="getDifficulty(this)" style="width: 17vw; margin: 1vw 10vw; background-color: #ec9123; padding: 1vw; color: cornsilk; font-size: 1em; text-align: center; border-radius: 2px;">
+        <option value="">Choisissez une difficulté</option>
+        <option value="4">Difficulté 1</option>
+        <option value="6">Difficulté 2</option>
+        <option value="8">Difficulté 3</option>
+      </select>
     </div>
   </div>
-  <style>
-    fieldset {
-      border: 0;
-      margin: 0;
-      padding: 0;
-    }
-
-    h4,
-    h5 {
-      line-height: 1.5em;
-      margin: 0;
-    }
-
-    hr {
-      background: #e9e9e9;
-      border: 0;
-      -moz-box-sizing: content-box;
-      box-sizing: content-box;
-      height: 1px;
-      margin: 0;
-      min-height: 1px;
-    }
-
-    img {
-      border: 0;
-      display: block;
-      height: auto;
-      max-width: 100%;
-    }
-
-    input {
-      border: 0;
-      color: inherit;
-      font-family: inherit;
-      font-size: 100%;
-      line-height: normal;
-      margin: 0;
-    }
-
-    p {
-      margin: 0;
-    }
-
-    .clearfix {
-      zoom: 1;
-    }
-
-    /* For IE 6/7 */
-    .clearfix:before,
-    .clearfix:after {
-      content: "";
-      display: table;
-    }
-
-    .clearfix:after {
-      clear: both;
-    }
-
-    /* ---------- LIVE-CHAT ---------- */
-
-    #live-chat {
-      bottom: 0;
-      font-size: 12px;
-      right: 24px;
-      position: fixed;
-      width: 300px;
-    }
-
-    #live-chat header {
-      background: #293239;
-      border-radius: 5px 5px 0 0;
-      color: #fff;
-      cursor: pointer;
-      padding: 16px 24px;
-    }
-
-    #live-chat h4:before {
-      background: #1a8a34;
-      border-radius: 50%;
-      content: "";
-      display: inline-block;
-      height: 8px;
-      margin: 0 8px 0 0;
-      width: 8px;
-    }
-
-    #live-chat h4 {
-      font-size: 12px;
-    }
-
-    #live-chat h5 {
-      font-size: 10px;
-    }
-
-    #live-chat form {
-      padding: 24px;
-    }
-
-    #live-chat input[type="text"] {
-      border: 1px solid #ccc;
-      border-radius: 3px;
-      padding: 8px;
-      outline: none;
-      width: 234px;
-    }
-
-    .chat-message-counter {
-      background: #e62727;
-      border: 1px solid #fff;
-      border-radius: 50%;
-      display: none;
-      font-size: 12px;
-      font-weight: bold;
-      height: 28px;
-      left: 0;
-      line-height: 28px;
-      margin: -15px 0 0 -15px;
-      position: absolute;
-      text-align: center;
-      top: 0;
-      width: 28px;
-    }
-
-    .chat-close {
-      background: #1b2126;
-      border-radius: 50%;
-      color: #fff;
-      display: block;
-      float: right;
-      font-size: 10px;
-      height: 16px;
-      line-height: 16px;
-      margin: 2px 0 0 0;
-      text-align: center;
-      width: 16px;
-    }
-
-    .chat {
-      background: #fff;
-    }
-
-    .chat-history {
-      height: 252px;
-      padding: 8px 24px;
-      overflow-y: scroll;
-    }
-
-    .chat-message {
-      margin: 16px 0;
-    }
-
-    .chat-message img {
-      border-radius: 50%;
-      float: left;
-    }
-
-    .chat-message-content {
-      margin-left: 56px;
-    }
-
-    .chat-time {
-      float: right;
-      font-size: 10px;
-    }
-
-    .chat-feedback {
-      font-style: italic;
-      margin: 0 0 0 80px;
-    }
-  </style>
-  <div id="live-chat">
-
-    <header class="clearfix">
-
-      <a href="#" style="text-decoration: none;" class="chat-close">X</a>
-
-      <h4>Général</h4>
-
-      <span class="chat-message-counter">3</span>
-
-    </header>
-
-    <?php
-    // Récupération des 20 derniers messages 
-    $pdo = connectToDbAndGetPdo();
-
-    $stmt = $pdo->prepare('SELECT M.*, P.* 
-FROM messages AS M
-LEFT JOIN players AS P ON M.id_sender = P.id_player ORDER BY M.date_comment DESC LIMIT 20');
-    $messages = $stmt->execute();
-    $messages = $stmt->fetchAll();
-
-
-    if (
-      $_SERVER['REQUEST_METHOD'] == "POST"
-      && isset($_POST['message'])
-    ) {
-      if(sendChatMessage($_POST['message'], $_SESSION['user']['id'], $pdo)){
-
-      }
-      else{
-        
-      }
-    }
-
-
-    ?>
-    <div class="chat">
-      <div class="chat-history">
-        <div id="msgscontainer" style="width: 100%;"></div>
-        <script>
-          function fetchMsgs() {
-            $.ajax({
-              type: 'POST',
-              url: 'getAllMsg.php',
-              success: function(data) {
-                document.getElementById('msgscontainer').innerHTML = data;
-              }
-            });
-            console.log('FETCHEDx');
-          }
-          $(document).ready(function() {
-            setInterval("fetchMsgs()", 1000);
-          });
-
-
-          setTimeout("fetchMsgs();", 1);
-        </script>
-        <hr>
-
-
-      </div> <!-- end chat-history -->
-
-
-      <form action="#" method="post">
-
-        <fieldset>
-
-          <input type="text" name="message" style="color: black; background-color: white;" placeholder="Saisissez votre message..." autofocus>
-          <input type="hidden">
-
-        </fieldset>
-
-      </form>
-
-    </div> <!-- end chat -->
-
-  </div> <!-- end live-chat -->
-
-
-
+  <div class="global_theme">
+    <div class="txt_imgtheme">
+      <h4 class="txt_theme">Exemple du thème 1 :</h4>
+      <img src="../../assets/img/icon_vg/valorant.png" class="img_theme">
+    </div>
+    <div class="txt_imgtheme">
+      <h4 class="txt_theme">Exemple du thème 2 :</h4>
+      <img src="../../assets/img/icon_acteur/image3.png" class="img_theme">
+    </div>
+    <div class="txt_imgtheme">
+      <h4 class="txt_theme">Exemple du thème 3 :</h4>
+      <img src="../../assets/img/icon_meme/image5.png" class="img_theme">
+    </div>
+  </div>
+  <center>
+    <button id="startGame" onclick="tableCreate()" style="background-color: #ec9123; text-decoration: none; color: cornsilk; padding: 1.5vw; border-radius: 3px; border: none">LANCER LA PARTIE</button>
+  </center>
+  <br>
+  <center>
+    <div class="border_jeu"></div>
+  </center>
+  <br><br>
+  <div id="timer" style="color: cornsilk; font-size: 1.5em; margin-top: 1.5vw; margin-left: 5vw; margin-bottom: 2vw"></div>
+  <center>
+    <div id="tableauCartes" class="cartes"></div>
+  </center>
+  <br><br>
   <footer style="background-color: #0c0b26;">
     <div class="footer-content">
       <div class="info">
@@ -379,13 +118,12 @@ LEFT JOIN players AS P ON M.id_sender = P.id_player ORDER BY M.date_comment DESC
         </div>
       </div>
     </div>
-    <br>
-    <br>
-    <br>
+    <br><br><br>
     <p class="mot_gris" style="margin-left: 13.5vw;">Copyright © 2022 Tous droits réservés</p>
     <br>
   </footer>
 </body>
+</html>
 
 <script>
 
@@ -439,52 +177,54 @@ var pairsFound = 0;
 
 
 function tourne_image(index) {
-    if (isLocked) {
-        return;
-    }
+  if (isLocked) {
+    return;
+  }
 
-    var carte = event.target;
+  var carte = event.target;
 
-    if (carte.classList.contains('flipped')) {
-        return;
-    }
+  if (carte.classList.contains('flipped')) {
+    return;
+  }
 
-    carte.style.transform = 'rotateY(180deg)';
-    setTimeout(function() {
-        // Utilisez la variable theme ici
-        carte.src = '<?= PROJECT_FOLDER ?>assets/img/' + theme + '/image' + index + '.png';
-        carte.classList.add('flipped');
-        cardsFlipped.push(carte);
+  // Ajoutez la classe 'flipped' pour appliquer l'effet de retournement
+  carte.classList.add('flipped');
 
-        if (cardsFlipped.length === 2) {
-            isLocked = true;
+  setTimeout(function () {
+    // Utilisez la variable theme ici
+    carte.src = '<?= PROJECT_FOLDER ?>assets/img/' + theme + '/image' + index + '.png';
+    cardsFlipped.push(carte);
 
-            if (cardsFlipped[0].src !== cardsFlipped[1].src) {
-                setTimeout(function() {
-                    cardsFlipped[0].style.transform = 'rotateY(0deg)';
-                    cardsFlipped[1].style.transform = 'rotateY(0deg)';
-                    cardsFlipped[0].classList.remove('flipped');
-                    cardsFlipped[1].classList.remove('flipped');
-                    cardsFlipped[0].src = '<?= PROJECT_FOLDER ?>assets/img/dos_carte.png';
-                    cardsFlipped[1].src = '<?= PROJECT_FOLDER ?>assets/img/dos_carte.png';
-                    cardsFlipped = [];
-                    isLocked = false;
-                }, 1000);
-            } else {
-                cardsFlipped = [];
-                isLocked = false;
+    if (cardsFlipped.length === 2) {
+      isLocked = true;
 
-                pairsFound++;
+      if (cardsFlipped[0].src !== cardsFlipped[1].src) {
+        setTimeout(function () {
+          // Retirez la classe 'flipped' pour annuler l'effet de retournement
+          cardsFlipped[0].classList.remove('flipped');
+          cardsFlipped[1].classList.remove('flipped');
+          cardsFlipped[0].src = '<?= PROJECT_FOLDER ?>assets/img/dos_carte.png';
+          cardsFlipped[1].src = '<?= PROJECT_FOLDER ?>assets/img/dos_carte.png';
+          cardsFlipped = [];
+          isLocked = false;
+        }, 1000);
+      } else {
+        cardsFlipped = [];
+        isLocked = false;
 
-                if (pairsFound === (selectedDifficulty * selectedDifficulty) / 2) {
-                    clearInterval(timerInterval);
-                    var tempsTotal = timerMinutes + " min " + timerSeconds + " sec " + timerMilliseconds + "00 ms";
-                    console.log("Toutes les paires ont été trouvées en " + tempsTotal);
-                }
-            }
+        pairsFound++;
+
+        if (pairsFound === (selectedDifficulty * selectedDifficulty) / 2) {
+          clearInterval(timerInterval);
+          var tempsTotal = timerMinutes + " min " + timerSeconds + " sec " + timerMilliseconds + "00 ms";
+          console.log("Toutes les paires ont été trouvées en " + tempsTotal);
         }
-    }, 100);
+      }
+    }
+  }, 100);
 }
+
+
 
 
 
@@ -608,5 +348,3 @@ function updateTimer() {
 
 
 </script>
-
-</html>
